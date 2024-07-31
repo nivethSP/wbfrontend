@@ -1,0 +1,22 @@
+<div fxLayoutGap="5px" class="divBodyContainer">
+    <div fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(30.3% - 28px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>No of Surplus Course:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{surplusCoarseParameter?.noOfSurplusCourse}}</div>
+            </div>
+        </ng-container>
+
+    </div>
+    <div *ngFor="let surplusCourseDetail of surplusCoarseParameter?.surplusCourseList;let indexOfelement=index;">
+        <div style="color: lightcoral">
+            <strong>Surplus course {{indexOfelement + 1}} details:</strong>
+        </div>
+        <mat-divider></mat-divider>
+        <app-surpluscorasedetail [surplusCourseDetail]="surplusCourseDetail" ></app-surpluscorasedetail>
+    </div>
+
+    
+</div>
+<ng-template #noContent>NA</ng-template>
+

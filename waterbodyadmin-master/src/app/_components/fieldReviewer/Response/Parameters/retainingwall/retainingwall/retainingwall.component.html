@@ -1,0 +1,48 @@
+
+<div fxLayoutGap="5px" class="divBodyContainer">
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Presence of Retaining walls:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{retainingWallParameter?.presenceOfRetainingWall}}</div>
+            </div>
+        </ng-container>
+
+    </div>
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start" *ngIf="retainingWallParameter?.presenceOfRetainingWall === 'Present';else noContent">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Retaining Wall:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{retainingWallParameter?.retainingWall}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>No of retaining wall sections:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{retainingWallParameter?.noOfSidesOfRetainingWall}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Condition of retaining wall:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{retainingWallParameter?.conditionOfWalls}}</div>
+            </div>
+        </ng-container>
+
+    </div>
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start" *ngIf="retainingWallParameter?.presenceOfRetainingWall === 'Present';else noContent">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Direction of Damaged wall:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">
+                    <mat-chip-list aria-label="damagedWallIssues">
+                        <mat-chip selected color="primary" *ngFor="let issue of damagedWallIssues">
+                            {{issue}}
+                        </mat-chip>
+                    </mat-chip-list>
+                </div>
+            </div>
+           
+        </ng-container>
+    </div>
+    
+</div>
+<ng-template #noContent></ng-template>

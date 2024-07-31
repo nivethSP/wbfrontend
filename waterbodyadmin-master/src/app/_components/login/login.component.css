@@ -1,0 +1,42 @@
+/* .mat-card {
+    padding: 0 !important;
+    border: 1px !important;
+    border-color: black !important;
+} */
+.login-form {
+    padding: 20px;
+}
+
+.full-width {
+    width: 100%;
+  }
+
+  .mat-card-header{
+    /* background-color:gold ; */
+    padding:5px ;
+    font-size: 10px;
+  }
+  
+  .mat-card-title{
+    font-size: 10px;
+  }
+  .mat-card{
+    padding:0 ;
+    background-color:aliceblue;
+  }
+  
+  .mat-card-content{
+    padding:5px ;
+  }
+  .images {
+    width: 50px;
+    height: auto; /* This ensures the aspect ratio is maintained */
+  }
+  .image{
+    margin-left: -20px;
+  }
+  
+  input.mat-input-element {
+    margin-top: -0.0625em;
+    margin-left: 4px;
+}

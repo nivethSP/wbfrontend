@@ -1,0 +1,23 @@
+<div class="container" *ngIf="surveyResponse">
+  <mat-card class="flex" *ngIf="this.surveyResponse.waterbodyType != ''">
+    <mat-card-header>
+      <mat-card-title>{{this.surveyResponse.waterbodyType}} Survey Response</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="scrollable" *ngIf="this.surveyResponse.waterbodyType  === 'Irrigation Tank'">
+        <app-irrigation-tank-survey-response [surveyResponse]="this.surveyResponse">
+        </app-irrigation-tank-survey-response>
+      </div>
+      <div *ngIf="this.surveyResponse.waterbodyType  === 'Pond'">
+        <app-pond-survey-response [surveyResponse]="this.surveyResponse"></app-pond-survey-response>
+      </div>
+      <div *ngIf="this.surveyResponse.waterbodyType  === 'Oorani'">
+        <app-oorani-survey-response [surveyResponse]="this.surveyResponse"></app-oorani-survey-response>
+      </div>
+      <div *ngIf="this.surveyResponse.waterbodyType  === 'Temple Tank'">
+        <app-temple-tank-survey-response [surveyResponse]="this.surveyResponse"></app-temple-tank-survey-response>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+</div>

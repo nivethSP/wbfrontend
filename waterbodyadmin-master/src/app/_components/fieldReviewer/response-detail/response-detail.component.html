@@ -1,0 +1,646 @@
+<div class="container">
+  <div class="flex-container" fxLayout="row" fxLayoutAlign="space-evenly-center">
+    <button mat-button (click)="accordion.openAll()">Expand All</button>
+    <button mat-button (click)="accordion.closeAll()">Collapse All</button>
+    <div *ngIf="surveyResponse && surveyResponse.verify_status === 0 && surveyResponse && surveyResponse.draft_status === 0">
+      <button mat-button (click)="updateResponse()">Verify</button>
+      <button mat-button (click)="updateSurveyResponse()">Edit</button>
+    </div>
+  </div>
+  <div>
+
+    <div class="container" *ngIf="surveyResponse">
+      <div *ngIf="this.waterParams.existingStructure;else waterBodyContent">
+        <mat-accordion multi>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Water body details
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div fxLayoutGap="5px" class="divBodyContainer">
+              <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+                <ng-container>
+                  <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                    <div fxFlex="35%" fxFlex.lt-md="100"><strong>District:</strong></div>
+                    <div fxFlex="65%" fxFlex.lt-md="100">{{surveyResponse.district}}</div>
+                  </div>
+
+                  <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                    <div fxFlex="35%" fxFlex.lt-md="100"><strong>Taluk:</strong></div>
+                    <div fxFlex="65%" fxFlex.lt-md="100">{{surveyResponse.taluk}}</div>
+                  </div>
+
+                  <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                    <div fxFlex="35%" fxFlex.lt-md="100"><strong>Block:</strong></div>
+                    <div fxFlex="65%" fxFlex.lt-md="100">{{surveyResponse.block}}</div>
+                  </div>
+                </ng-container>
+              </div>
+
+              <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+                <ng-container>
+                  <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                    <div fxFlex="35%" fxFlex.lt-md="100"><strong>Village:</strong></div>
+                    <div fxFlex="65%" fxFlex.lt-md="100">{{surveyResponse.village}}</div>
+                  </div>
+
+                  <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                    <div fxFlex="35%" fxFlex.lt-md="100"><strong>Existing Structure:</strong></div>
+                    <div fxFlex="65%" fxFlex.lt-md="100">{{waterParams.existingStructure}}</div>
+                  </div>
+
+                  <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                    <div fxFlex="35%" fxFlex.lt-md="100"><strong>Type of Structure:</strong></div>
+                    <div fxFlex="65%" fxFlex.lt-md="100">{{waterParams.typeOfStructure}}</div>
+                  </div>
+
+                </ng-container>
+              </div>
+
+            </div>
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Images
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="imgContainer">
+              <ng-image-slider [images]="imgCollection" [fxShow]=true imageSize="{width: 205, height: 200, space: 3}"
+                #nav>
+              </ng-image-slider>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </div>
+    <ng-template #waterBodyContent>
+      <div class="container">
+        <div *ngIf="surveyResponse">
+          <mat-accordion multi>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Water body details
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+
+              <div fxLayoutGap="5px" class="divBodyContainer">
+
+                <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+                  <ng-container>
+                    <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column"
+                      *ngIf="surveyResponse.jurisdiction != null && surveyResponse.jurisdiction != 'Village Panchayat'">
+                      <div fxFlex="50%" fxFlex.lt-md="100"><strong>Jurisdiction:</strong></div>
+                      <div fxFlex="50%" fxFlex.lt-md="100">{{surveyResponse.jurisdiction}}</div>
+                    </div>
+
+                    <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column"
+                      *ngIf="surveyResponse.jurisdiction != null && surveyResponse.jurisdiction != 'Village Panchayat'">
+                      <div fxFlex="50%" fxFlex.lt-md="100"><strong>Name:</strong></div>
+                      <div fxFlex="50%" fxFlex.lt-md="100">{{surveyResponse.name}}</div>
+                    </div>
+
+                    <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column"
+                      *ngIf="surveyResponse.jurisdiction != null && surveyResponse.jurisdiction != 'Village Panchayat'">
+                      <div fxFlex="50%" fxFlex.lt-md="100"><strong>Ward:</strong></div>
+                      <div fxFlex="50%" fxFlex.lt-md="100">{{surveyResponse.ward}}</div>
+                    </div>
+
+                    <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column"
+                      *ngIf="surveyResponse.jurisdiction != null && surveyResponse.jurisdiction === 'Village Panchayat'">
+                      <div fxFlex="50%" fxFlex.lt-md="100"><strong>District:</strong></div>
+                      <div fxFlex="50%" fxFlex.lt-md="100">{{surveyResponse.district}}</div>
+                    </div>
+
+                    <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column"
+                      *ngIf="surveyResponse.jurisdiction != null && surveyResponse.jurisdiction === 'Village Panchayat'">
+                      <div fxFlex="50%" fxFlex.lt-md="100"><strong>Taluk:</strong></div>
+                      <div fxFlex="50%" fxFlex.lt-md="100">{{surveyResponse.taluk}}</div>
+                    </div>
+
+                    <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column"
+                      *ngIf="surveyResponse.jurisdiction != null && surveyResponse.jurisdiction === 'Village Panchayat'">
+                      <div fxFlex="50%" fxFlex.lt-md="100"><strong>Block:</strong></div>
+                      <div fxFlex="50%" fxFlex.lt-md="100">{{surveyResponse.block}}</div>
+                    </div>
+                  </ng-container>
+                </div>
+                <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+                  <ng-container>
+                    <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column"
+                      *ngIf="surveyResponse.jurisdiction != null && surveyResponse.jurisdiction === 'Village Panchayat'">
+                      <div fxFlex="50%" fxFlex.lt-md="100"><strong>Village:</strong></div>
+                      <div fxFlex="50%" fxFlex.lt-md="100">{{surveyResponse.village}}</div>
+                    </div>
+
+                    <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                      <div fxFlex="50%" fxFlex.lt-md="100"><strong>Water Body Type:</strong></div>
+                      <div fxFlex="50%" fxFlex.lt-md="100">{{surveyResponse.waterbodyType}}</div>
+                    </div>
+
+                    <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                      <div fxFlex="50%" fxFlex.lt-md="100"><strong>Waterbody Id:</strong></div>
+                      <div fxFlex="50%" fxFlex.lt-md="100">
+                        {{surveyResponse.waterbodyId}}</div>
+                    </div>
+
+
+                  </ng-container>
+                </div>
+
+                <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+                  <ng-container>
+                    <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                      <div fxFlex="50%" fxFlex.lt-md="100"><strong>Survey Number:</strong></div>
+                      <div fxFlex="50%" fxFlex.lt-md="100">{{surveyResponse.surveyNumber}}</div>
+                    </div>
+
+                    <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                      <div fxFlex="50%" fxFlex.lt-md="100"><strong>Ownership:</strong></div>
+                      <div fxFlex="50%" fxFlex.lt-md="100" *ngIf="waterParams.ownership;else noContent">
+                        {{waterParams.ownership}}</div>
+                    </div>
+
+                    <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                      <div fxFlex="50%" fxFlex.lt-md="100"><strong>Waterbody Availability:</strong></div>
+                      <div fxFlex="50%" fxFlex.lt-md="100" *ngIf="surveyResponse.waterBodyAvailability;else noContent">
+                        {{surveyResponse.waterBodyAvailability}}</div>
+                    </div>
+
+                  </ng-container>
+                </div>
+
+              </div>
+
+            </mat-expansion-panel>
+
+            <mat-expansion-panel *ngIf="surveyResponse.waterBodyAvailability">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Hydrologic Parameters
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div fxLayoutGap="5px" *ngIf="surveyResponse.waterParams" class="divBodyContainer">
+                <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+                  <ng-container>
+                    <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column"
+                      *ngIf="waterParams.hydrologicParamaters.nameOfTank">
+                      <div fxFlex="50%" fxFlex.lt-md="100"><strong>Name:</strong></div>
+                      <div fxFlex="50%" fxFlex.lt-md="100">{{waterParams.hydrologicParamaters.nameOfTank}}</div>
+                    </div>
+
+                    <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column"
+                      *ngIf="waterParams.hydrologicParamaters.nameOfPond">
+                      <div fxFlex="50%" fxFlex.lt-md="100"><strong>Name:</strong></div>
+                      <div fxFlex="50%" fxFlex.lt-md="100">{{waterParams.hydrologicParamaters.nameOfPond}}</div>
+                    </div>
+
+                    <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column"
+                      *ngIf="waterParams.hydrologicParamaters.name">
+                      <div fxFlex="50%" fxFlex.lt-md="100"><strong>Name:</strong></div>
+                      <div fxFlex="50%" fxFlex.lt-md="100">{{waterParams.hydrologicParamaters.name}}</div>
+                    </div>
+
+                    <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                      <div fxFlex="50%" fxFlex.lt-md="100"><strong>Water Spread Area in Hactares:</strong></div>
+                      <div fxFlex="50%" fxFlex.lt-md="100">{{waterParams.hydrologicParamaters.waterSpreadArea}}</div>
+                    </div>
+
+                    <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column"
+                      *ngIf="waterParams.hydrologicParamaters.registeredAyacut">
+                      <div fxFlex="50%" fxFlex.lt-md="100"><strong>Registered Ayacut in Hectare (RA):</strong></div>
+                      <div fxFlex="50%" fxFlex.lt-md="100">{{waterParams.hydrologicParamaters.registeredAyacut}}</div>
+                    </div>
+
+
+                  </ng-container>
+
+                </div>
+                <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+                  <ng-container>
+
+                    <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column"
+                      *ngIf="surveyResponse.waterbodyType !== 'Oorani'">
+                      <div fxFlex="50%" fxFlex.lt-md="100"><strong>Original Capacity in MCM:</strong></div>
+                      <div fxFlex="50%" fxFlex.lt-md="100">{{waterParams.hydrologicParamaters.originalCapacity}}</div>
+                    </div>
+
+                    <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column"
+                      *ngIf="surveyResponse.waterbodyType === 'Oorani'">
+                      <div fxFlex="50%" fxFlex.lt-md="100"><strong>Original Capacity in CUM:</strong></div>
+                      <div fxFlex="50%" fxFlex.lt-md="100">{{waterParams.hydrologicParamaters.originalCapacity}}</div>
+                    </div>
+
+                    <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                      <div fxFlex="50%" fxFlex.lt-md="100"><strong>No of Fillings:</strong></div>
+                      <div fxFlex="50%" fxFlex.lt-md="100">{{waterParams.hydrologicParamaters.noOfFillings}}</div>
+                    </div>
+
+                    <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                      <div fxFlex="50%" fxFlex.lt-md="100"><strong>Month of First Filling:</strong></div>
+                      <div fxFlex="50%" fxFlex.lt-md="100">{{waterParams.hydrologicParamaters.monthOfFirstFilling}}
+                      </div>
+                    </div>
+
+                  </ng-container>
+
+                </div>
+                <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+                  <ng-container>
+                    <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                      <div fxFlex="50%" fxFlex.lt-md="100"><strong>Water Availability:</strong></div>
+                      <div fxFlex="50%" fxFlex.lt-md="100">{{waterParams.hydrologicParamaters.waterAvailability}}</div>
+                    </div>
+
+                    <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                      <div fxFlex="50%" fxFlex.lt-md="100"><strong>No of Sources of Water Supply:</strong></div>
+                      <div fxFlex="50%" fxFlex.lt-md="100">{{waterParams.hydrologicParamaters.noOfSources}}</div>
+                    </div>
+
+                    <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                      <div fxFlex="50%" fxFlex.lt-md="100"><strong>Type of Catchment:</strong></div>
+                      <div fxFlex="50%" fxFlex.lt-md="100">{{waterParams.hydrologicParamaters.typeOfCatchment}}</div>
+                    </div>
+
+                  </ng-container>
+
+                </div>
+
+                <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+                  <ng-container>
+                    <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column"
+                      *ngIf="waterParams.hydrologicParamaters.monthOfScarcity">
+                      <div fxFlex="50%" fxFlex.lt-md="100"><strong>Month of Dry up / Scarcity:</strong></div>
+                      <div fxFlex="50%" fxFlex.lt-md="100">{{waterParams.hydrologicParamaters.monthOfScarcity}}</div>
+                    </div>
+
+                    <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                      <div fxFlex="50%" fxFlex.lt-md="100"><strong>Sources of supply:</strong></div>
+                      <div fxFlex="50%" fxFlex.lt-md="100">
+                        <mat-chip-list aria-label="hydrologicalSources">
+                          <mat-chip selected color="primary" *ngFor="let source of hydrologicalSources">
+                            {{source}}
+                          </mat-chip>
+                        </mat-chip-list>
+                      </div>
+                    </div>
+                  </ng-container>
+
+                </div>
+
+
+              </div>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel *ngIf="surveyResponse.waterBodyAvailability">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Source Parameters
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <mat-tab-group backgroundColor="primary" class="divBodyContainer">
+                <mat-tab label="Free catchment" *ngIf="freeCatchment">
+                  <app-freecatchment [freeCatchment]="freeCatchment"></app-freecatchment>
+                </mat-tab>
+                <mat-tab label="River Stream" *ngIf="riverStream">
+                  <app-riverstream [riverStream]="riverStream"></app-riverstream>
+                </mat-tab>
+                <mat-tab label="Supply from Surplus of Upper tank" *ngIf="surplsFromUpperTank">
+                  <app-surplusfromuppertank [surplsFromUpperTank]="surplsFromUpperTank"></app-surplusfromuppertank>
+                </mat-tab>
+                <mat-tab label="Supply from Upper tank sluice" *ngIf="upperTankSluice">
+                  <app-supplyfromuppertanksluice [upperTankSluice]="upperTankSluice"></app-supplyfromuppertanksluice>
+                </mat-tab>
+                <mat-tab label="Irrigation Canal" *ngIf="irrigationCanal">
+                  <app-irrigationcanal [irrigationCanal]="irrigationCanal"></app-irrigationcanal>
+                </mat-tab>
+                <mat-tab label="Supply from Spring" *ngIf="spring">
+                  <app-springs [spring]="spring"></app-springs>
+                </mat-tab>
+                <mat-tab label="Supply from Subsurface Flow" *ngIf="subsurfaceFlow">
+                  <app-subsurfaceflow [subsurfaceFlow]="subsurfaceFlow"></app-subsurfaceflow>
+                </mat-tab>
+
+
+              </mat-tab-group>
+            </mat-expansion-panel>
+
+  
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Water Spread Area Details
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div fxLayoutGap="5px" class="divBodyContainer">
+                <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+                  <ng-container>
+                    <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                      <div fxFlex="40%" fxFlex.lt-md="100"><strong>Issues in Water Spread Area:</strong></div>
+                      <div fxFlex="60%" fxFlex.lt-md="100">
+                        <mat-chip-list aria-label="waterSpreadAreaIssues">
+                          <mat-chip selected color="primary" *ngFor="let issue of waterSpreadAreaIssues">
+                            {{issue}}
+                          </mat-chip>
+                        </mat-chip-list>
+                      </div>
+                    </div>
+                    <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                      <div fxFlex="40%" fxFlex.lt-md="100"><strong>Invasive species:</strong></div>
+                      <div fxFlex="60%" fxFlex.lt-md="100">
+                        <mat-chip-list aria-label="waterSpreadInvasiveSpecies">
+                          <mat-chip selected color="primary" *ngFor="let specie of waterSpreadInvasiveSpecies">
+                            {{specie}}
+                          </mat-chip>
+                        </mat-chip-list>
+                      </div>
+                    </div>
+                    <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                      <div fxFlex="40%" fxFlex.lt-md="100"><strong>Percentage of Spread:</strong></div>
+                      <div fxFlex="60%" fxFlex.lt-md="100">
+                        {{percentageOfSpread}}
+                      </div>
+                    </div>
+                  </ng-container>
+                </div>
+              </div>
+            </mat-expansion-panel>
+            <!--mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Ghats Parameter Details
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div fxLayoutGap="5px" class="form-container">
+                <ng-container *ngIf="ghatsParameter">
+                  <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+                    <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                      <div fxFlex="40%" fxFlex.lt-md="100"><strong>Ghats Parameter:</strong></div>
+                      <div fxFlex="60%" fxFlex.lt-md="100">{{ ghatsParameter }}</div>
+                    </div>
+            
+                    <ng-container *ngIf="ghatsParameter === 'Present'">
+                      <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                        <div fxFlex="40%" fxFlex.lt-md="100"><strong>No. of Ghats Needed:</strong></div>
+                        <div fxFlex="60%" fxFlex.lt-md="100">{{ needForGhats }}</div>
+                      </div>
+                      
+                      <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                        <div fxFlex="40%" fxFlex.lt-md="100"><strong> Ghats Count:</strong></div>
+                        <div fxFlex="60%" fxFlex.lt-md="100">{{ ghatsCount }}</div>
+                      </div>
+            
+                      <ng-container *ngFor="let ghat of ghatsList; let i = index">
+                        <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                          <div fxFlex="40%" fxFlex.lt-md="100"><strong>Condition of Ghat {{ i + 1 }}:</strong></div>
+                          <div fxFlex="60%" fxFlex.lt-md="100">{{ ghat.conditionOfGhats }}</div>
+                        </div>
+                      </ng-container>
+                    </ng-container>
+                  </div>
+                </ng-container>
+              </div>
+            </mat-expansion-panel-->
+            
+           
+            
+
+<!--mat-expansion-panel *ngIf="surveyResponse.waterBodyAvailability">
+<mat-expansion-panel-header>
+  <mat-panel-title>
+    Ghat Details
+  </mat-panel-title>
+</mat-expansion-panel-header>
+<div fxLayoutGap="5px" class="divBodyContainer">
+  <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+    <ng-container>
+      <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+        <div fxFlex="50%" fxFlex.lt-md="100"><strong>Presence of access ghat:</strong></div>
+        <div fxFlex="50%" fxFlex.lt-md="100">{{bundDetail?.presenceOfAccessGhat}}</div>
+    </div>
+
+    <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+        <div fxFlex="50%" fxFlex.lt-md="100"><strong>No of Access Ghats:</strong></div>
+        <div fxFlex="50%" fxFlex.lt-md="100" *ngIf="bundDetail?.presenceOfAccessGhat === 'Yes';else noContent">
+            {{bundDetail?.noOfAccessGhats}}</div>
+    </div>
+
+    <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+        <div fxFlex="50%" fxFlex.lt-md="100"><strong>Ghats Condition:</strong></div>
+        <div fxFlex="50%" fxFlex.lt-md="100" *ngIf="bundDetail?.accessGhatsConditionList;else noContent">
+            <mat-chip-list aria-label="accessGhatsConditions">
+                <mat-chip selected color="primary"  *ngFor="let ghatCondition of bundDetail?.accessGhatsConditionList;let indexOfelement=index;">
+                    {{indexOfelement + 1}}-{{ghatCondition.condition}}
+                </mat-chip>
+            </mat-chip-list>
+        </div>
+    </div>
+
+    </ng-container>
+  </div>
+</div>
+</mat-expansion-panel-->
+
+
+            <mat-expansion-panel *ngIf="embankmentDetail">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Embankment Details
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <app-embankment [embankmentDetail]="embankmentDetail"></app-embankment>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel *ngIf="inletParameter">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Inlet Parameters
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <app-inlet [inletParameter]="inletParameter"></app-inlet>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel *ngIf="outletParameter">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Outlet Parameters
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <app-outlet [outletParameter]="outletParameter"></app-outlet>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel *ngIf="bundDetail">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Bund Parameters
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <app-bund [bundDetail]="bundDetail"></app-bund>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel *ngIf="sluiceParamter">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Sluice Parameters
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <app-sluice [sluiceParamter]="sluiceParamter"></app-sluice>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel *ngIf="surplusWeirParameter">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Sluice Weir Parameters
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <app-surplusweir [surplusWeirParameter]="surplusWeirParameter"></app-surplusweir>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel *ngIf="surplusCoarseParameter">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Surplus Coarse Parameters
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <app-surpluscoarse [surplusCoarseParameter]="surplusCoarseParameter"></app-surpluscoarse>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel *ngIf="retainingwallParameter">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Retaining wall Parameters
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <app-retainingwall [retainingWallParameter]="retainingwallParameter"></app-retainingwall>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel *ngIf="fencingParameter">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Fencing Parameters
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <app-fencing [fenceParameter]="fencingParameter"></app-fencing>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel *ngIf="functionalParameter">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Functional Parameters
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <app-functional [functionalParameter]="functionalParameter"></app-functional>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel *ngIf="uniquenessParameter">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Uniqueness Parameters
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <app-uniqueness [uniquenessParameter]="uniquenessParameter"></app-uniqueness>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel *ngIf="legalIssueParameter">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Legal Issues
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <app-legalissue [legalIssueParameter]="legalIssueParameter"></app-legalissue>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel *ngIf="encroachmentDetail">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Encroachment Details
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <app-encroachment [encroachmentDetail]="encroachmentDetail"></app-encroachment>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel *ngIf="presenceOfWUA">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Presence of WUA
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <app-presenceofwua [presenceOfWUA]="presenceOfWUA"></app-presenceofwua>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel *ngIf="renovationDetail">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Renovation Details
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <app-renovation [renovationDetail]="renovationDetail"></app-renovation>
+            </mat-expansion-panel>
+
+            <!--mat-expansion-panel *ngIf="renovationDetail">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Ghat Parameter
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <app-form8-ghats [surveyData]="form8GhatsData"></app-form8-ghats>
+
+            </mat-expansion-panel-->
+            
+
+            <!--mat-expansion-panel *ngIf="ghatDetail">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Ghat Details
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <app-ghatt [ghatDetail]="ghatDetail"></app-ghatt>
+
+            </mat-expansion-panel-->
+
+            <mat-expansion-panel *ngIf="futureActivity">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Future activities
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <app-futureactivity [futureActivity]="futureActivity"></app-futureactivity>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Images
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="imgContainer">
+                <ng-image-slider [images]="imgCollection" [fxShow]=true imageSize="{width: 205, height: 200, space: 3}"
+                  #nav>
+                </ng-image-slider>
+              </div>
+
+              <!-- <div class="imgContainer" *ngFor="
+           let img of tankMetaData.images">
+           <img [src]= img.image>
+      </div> -->
+            </mat-expansion-panel>
+
+            <!-- <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Map
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+
+              <div id="map" class="map"></div>
+            </mat-expansion-panel> -->
+
+
+          </mat-accordion>
+        </div>
+      </div>
+    </ng-template>
+    <div id="map" class="map"></div>
+    <ng-template #noContent>NA</ng-template>

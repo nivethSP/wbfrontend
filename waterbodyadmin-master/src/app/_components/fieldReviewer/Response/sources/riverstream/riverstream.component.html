@@ -1,0 +1,88 @@
+<div fxLayoutGap="5px" class="divBodyContainer">
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+          <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+            <div fxFlex="50%" fxFlex.lt-md="100"><strong>Name of the river/stream:</strong></div>
+            <div fxFlex="50%" fxFlex.lt-md="100">{{riverStream?.name}}</div>
+          </div>
+  
+          <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+            <div fxFlex="50%" fxFlex.lt-md="100"><strong>Nature of bed:</strong></div>
+            <div fxFlex="50%" fxFlex.lt-md="100">{{riverStream?.natureOfBed}}</div>
+          </div>
+  
+          <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+            <div fxFlex="50%" fxFlex.lt-md="100"><strong>Type of Cross Section Stream:</strong></div>
+            <div fxFlex="50%" fxFlex.lt-md="100">{{riverStream?.typeOfCross}}</div>
+          </div>
+         
+        </ng-container>
+  
+      </div>
+
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+      <ng-container>
+        <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+          <div fxFlex="50%" fxFlex.lt-md="100"><strong>% of Source Contribution:</strong></div>
+          <div fxFlex="50%" fxFlex.lt-md="100">{{riverStream?.percentageOfContri}}</div>
+        </div>
+
+        <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+          <div fxFlex="50%" fxFlex.lt-md="100"><strong>Season - Start:</strong></div>
+          <div fxFlex="50%" fxFlex.lt-md="100">{{riverStream?.contriStart}}</div>
+        </div>
+
+        <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+          <div fxFlex="50%" fxFlex.lt-md="100"><strong>Season - End:</strong></div>
+          <div fxFlex="50%" fxFlex.lt-md="100">{{riverStream?.contriEnd}}</div>
+        </div>
+
+       
+      </ng-container>
+
+    </div>
+    
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+      <ng-container>
+        <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+            <div fxFlex="50%" fxFlex.lt-md="100"><strong>Top width of stream in m:</strong></div>
+            <div fxFlex="50%" fxFlex.lt-md="100">{{riverStream?.topWidth}}</div>
+          </div>
+  
+          <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+            <div fxFlex="50%" fxFlex.lt-md="100"><strong>Bed width of stream in m:</strong></div>
+            <div fxFlex="50%" fxFlex.lt-md="100">{{riverStream?.bed}}</div>
+          </div>
+
+        <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+          <div fxFlex="50%" fxFlex.lt-md="100"><strong>Depth of stream in m:</strong></div>
+          <div fxFlex="50%" fxFlex.lt-md="100">{{riverStream?.depth}}</div>
+        </div>
+      </ng-container>
+
+    </div>
+
+      <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+
+          <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+              <div fxFlex="50%" fxFlex.lt-md="100"><strong>Issues in Stream:</strong></div>
+              <div fxFlex="50%" fxFlex.lt-md="100">
+                <!-- <mat-list *ngFor="let issue of streamIssues">
+                  <mat-list-item>{{issue}}</mat-list-item>
+                </mat-list> -->
+                <mat-chip-list aria-label="streamIssues">
+                  <mat-chip selected color="primary" *ngFor="let issue of streamIssues">
+                      {{issue}}
+                  </mat-chip>
+                </mat-chip-list>
+              </div>
+            </div>
+         
+        </ng-container>
+  
+      </div>
+
+
+  </div>
+

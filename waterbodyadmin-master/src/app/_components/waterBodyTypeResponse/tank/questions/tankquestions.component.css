@@ -1,0 +1,17 @@
+.source1SupplyContainer {
+    display: flex;
+    flex-wrap: wrap;
+    width: 300px;
+    justify-content: flex-start;
+}
+.mat-tab-body-wrapper
+{
+    margin: 16px;
+}
+::ng-deep .mat-horizontal-stepper-header-container {
+    overflow-x: auto !important;
+  }
+
+::ng-deep .mat-horizontal-stepper-header{
+    min-width: fit-content !important;
+  }

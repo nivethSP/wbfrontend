@@ -1,0 +1,95 @@
+<form [formGroup]="resourceForm" novalidate (ngSubmit)="onSubmit()">
+    <mat-card class="shipping-card">
+        <mat-card-header>
+            <mat-card-title>Add Habitation</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Enter District Code" formControlName="DistrictCode">
+                        <mat-error *ngIf="resourceForm.controls['DistrictCode'].hasError('required')">
+                            DistrictCode is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Enter District" formControlName="District">
+                        <mat-error *ngIf="resourceForm.controls['District'].hasError('required')">
+                            District is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Enter Block Code" formControlName="BlockCode">
+                        <mat-error *ngIf="resourceForm.controls['BlockCode'].hasError('required')">
+                            BlockCode is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Enter Block" formControlName="Block">
+                        <mat-error *ngIf="resourceForm.controls['Block'].hasError('required')">
+                            Block is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Enter Village Code" formControlName="VillageCode">
+                        <mat-error *ngIf="resourceForm.controls['VillageCode'].hasError('required')">
+                            VillageCode is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Enter Village" formControlName="Village">
+                        <mat-error *ngIf="resourceForm.controls['Village'].hasError('required')">
+                            Village is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Enter Habitation Code" formControlName="HabitationCode">
+                        <mat-error *ngIf="resourceForm.controls['HabitationCode'].hasError('required')">
+                            HabitationCode is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Enter Habitation" formControlName="Habitation">
+                        <mat-error *ngIf="resourceForm.controls['Habitation'].hasError('required')">
+                            Habitation is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" type="submit" [class.spinner]="loading"
+                [disabled]="!resourceForm.valid">Submit</button>
+            <button type="button" mat-raised-button color="warn" (click)="onCancel()">Cancel</button>
+        </mat-card-actions>
+    </mat-card>
+</form>

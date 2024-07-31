@@ -1,0 +1,229 @@
+<div class="container">
+    Reviews
+    <div class="flexcontainer" fxLayout="row" fxLayoutAlign="space-between none">
+
+        <div>
+            <mat-form-field class="full-width">
+                <mat-label>Jurisdiction</mat-label>
+                <mat-select (selectionChange)="onJurisdiction($event.value)">
+                    <mat-option *ngFor="
+                              let jurisdiction of jurisdictions" [value]="jurisdiction.Code">
+                        {{ jurisdiction.Code }}
+                    </mat-option>
+                </mat-select>
+
+            </mat-form-field>
+        </div>
+
+        <div *ngIf="jurisdiction === 'Village Panchayat'">
+            <mat-form-field class="full-width">
+                <mat-label>District</mat-label>
+                <mat-select (selectionChange)="ondistrictchange($event.value)">
+                    <mat-option value="All">All</mat-option>
+                    <mat-option *ngFor="
+                            let district of districts" [value]="district.id">
+                        {{ district.name }}
+                    </mat-option>
+                </mat-select>
+
+            </mat-form-field>
+        </div>
+
+        <div *ngIf="jurisdiction === 'Village Panchayat'">
+            <mat-form-field class="full-width">
+                <mat-label>Taluk</mat-label>
+                <mat-select (selectionChange)="ontalukchange($event.value)">
+                    <mat-option value="All">All</mat-option>
+                    <mat-option *ngFor="
+                              let taluk of taluks" [value]="taluk.id">
+                        {{ taluk.name }}
+                    </mat-option>
+                </mat-select>
+
+            </mat-form-field>
+        </div>
+
+        <div *ngIf="jurisdiction === 'Village Panchayat'">
+            <mat-form-field class="full-width">
+                <mat-label>Block</mat-label>
+                <mat-select (selectionChange)="onblockchange($event.value)">
+                    <mat-option value="All">All</mat-option>
+                    <mat-option *ngFor="
+                              let block of blocks" [value]="block.id">
+                        {{ block.name }}
+                    </mat-option>
+                </mat-select>
+
+            </mat-form-field>
+        </div>
+
+        <div *ngIf="jurisdiction === 'Village Panchayat'">
+            <mat-form-field class="full-width">
+                <mat-label>Village</mat-label>
+                <mat-select (selectionChange)="onvillagechange($event.value)">
+                    <mat-option value="All">All</mat-option>
+                    <mat-option *ngFor="
+                              let panchayat of panchayats" [value]="panchayat.id">
+                        {{ panchayat.name }}
+                    </mat-option>
+                </mat-select>
+
+            </mat-form-field>
+        </div>
+
+        <div *ngIf="jurisdiction != null && jurisdiction != 'Village Panchayat'">
+            <mat-form-field class="full-width">
+                <mat-label>Name</mat-label>
+                <mat-select (selectionChange)="onnamechange($event.value)">
+                    <mat-option value="All">All</mat-option>
+                    <mat-option *ngFor="
+                              let urbanlocaBody of urbanlocaBodies" [value]="urbanlocaBody.Name">
+                        {{ urbanlocaBody.Name }}
+                    </mat-option>
+                </mat-select>
+
+            </mat-form-field>
+        </div>
+
+        <div *ngIf="jurisdiction != null && jurisdiction != 'Village Panchayat'">
+            <mat-form-field class="full-width">
+                <mat-label>Ward</mat-label>
+                <mat-select (selectionChange)="onwardchange($event.value)">
+                    <mat-option value="All">All</mat-option>
+                    <mat-option *ngFor="
+                              let ward of wards" [value]="ward.Ward">
+                        {{ ward.Ward }}
+                    </mat-option>
+                </mat-select>
+
+            </mat-form-field>
+        </div>
+
+        <div>
+            <mat-form-field>
+                <mat-label>Search By Water Body ID</mat-label>
+                <input matInput placeholder="Search By Water Body ID" value="" (input)="applyFilter($event)">
+            </mat-form-field>
+        </div>
+        <div>
+            <button mat-raised-button color="primary" type="button" (click)="filter()">Search</button>
+
+        </div>
+        <div>
+            <a [routerLink]="['/fieldReviewer/create']" mat-fab color="primary">
+                <mat-icon>add</mat-icon>
+            </a>
+        </div>
+
+    </div>
+    <div>
+        <div class="spinner-container" *ngIf="dataSource.loading$ | async">
+            <mat-spinner style="margin:0 auto;" mode="indeterminate" diameter="40"></mat-spinner>
+        </div>
+        <mat-table class="mat-elevation-z8" [dataSource]="dataSource" matSort matSortActive="waterbodyName"
+            matSortDirection="asc" matSortDisableClear>
+
+            <ng-container matColumnDef="district">
+                <mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by District">District
+                </mat-header-cell>
+                <mat-cell *matCellDef="let resource">{{resource.district}}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="taluk">
+                <mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Taluk">Taluk
+                </mat-header-cell>
+                <mat-cell *matCellDef="let resource">{{resource.taluk}}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="block">
+                <mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Block">Block
+                </mat-header-cell>
+                <mat-cell *matCellDef="let resource">{{resource.block}}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="village">
+                <mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Village">Village
+                </mat-header-cell>
+                <mat-cell *matCellDef="let resource">{{resource.village}}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="waterbodyType">
+                <mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by WaterBodyType">Water
+                    Body Type
+                </mat-header-cell>
+                <mat-cell *matCellDef="let resource">{{resource.waterbodyType}}</mat-cell>
+            </ng-container>
+
+
+            <ng-container matColumnDef="waterbodyId">
+                <mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by WaterBodyId">Water
+                    Body Id
+                </mat-header-cell>
+                <mat-cell *matCellDef="let resource">{{resource.waterbodyId}}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="waterbodyName">
+                <mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by WaterBodyName">Water
+                    Body Name
+                </mat-header-cell>
+                <mat-cell *matCellDef="let resource">{{resource.waterbodyName}}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="draft_status">
+                <mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Draft Status">Status
+                </mat-header-cell>
+                <mat-cell *matCellDef="let resource">
+                    {{ (resource.draft_status ? 'Draft' : 'Submitted')}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="verify_status">
+                <mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Draft Status">Admin
+                    Status
+                </mat-header-cell>
+                <mat-cell *matCellDef="let resource">
+                    {{ (resource.verify_status ? 'Verified' : 'Pending')}}
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="detail">
+                <mat-header-cell *matHeaderCellDef>Detail
+                </mat-header-cell>
+                <mat-cell *matCellDef="let resource">
+                    <button mat-icon-button color="primary" (click)="redirectToDetail(resource.id)">
+                        <mat-icon class="mat-18">remove_red_eye</mat-icon>
+                    </button>
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="update">
+                <mat-header-cell *matHeaderCellDef>Update
+                </mat-header-cell>
+                <mat-cell *matCellDef="let resource">
+                    <button *ngIf="!resource.verify_status" mat-icon-button color="primary"
+                        (click)="redirectToUpdate(resource.id)">
+                        <mat-icon class="mat-18">edit</mat-icon>
+                    </button>
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="delete">
+                <mat-header-cell *matHeaderCellDef>Delete
+                </mat-header-cell>
+                <mat-cell *matCellDef="let resource">
+                    <button mat-icon-button color="accent" (click)="delete(resource.id)">
+                        <mat-icon class="mat-18">delete</mat-icon>
+                    </button>
+                </mat-cell>
+            </ng-container>
+
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+            <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+        </mat-table>
+
+        <mat-paginator [length]="this.dataLength" [pageSize]="10" [pageSizeOptions]="[10, 20, 50]"></mat-paginator>
+    </div>
+</div>

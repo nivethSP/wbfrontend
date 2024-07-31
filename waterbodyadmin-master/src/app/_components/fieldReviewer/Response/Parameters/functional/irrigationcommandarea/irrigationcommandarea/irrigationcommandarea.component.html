@@ -1,0 +1,97 @@
+<div fxLayoutGap="5px" class="divBodyContainer">
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Registered Ayacut under cultivation in HA:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{irrigation?.registeredAyacut}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Present Ayacut under cultivation in Ha:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{irrigation?.presentAyacut}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>No of Cropping:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{irrigation?.noOfCrops}}</div>
+            </div>
+
+        </ng-container>
+
+    </div>
+
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Name of 1st Crop:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{irrigation?.firstCropName}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Name of 2nd Crop:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{irrigation?.secondCropName}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>No of Dug Wells in Ayacut:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{irrigation?.noOfDugWells}}</div>
+            </div>
+        </ng-container>
+
+    </div>
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Max depth of Dug Well(Ft):</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{irrigation?.maxDepthOfDugWell}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>No of Bore wells in Ayacut:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{irrigation?.noOfBoreWells}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Max depth of Bore Well(Ft):</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{irrigation?.maxDepthOfBoreWell}}</div>
+            </div>
+        </ng-container>
+
+    </div>
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>No of beneficiaries:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{irrigation?.noOfBeneficiaries}}</div>
+            </div>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Nature of Ayacut under non-cultivation in Ha:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">
+                    <mat-chip-list aria-label="natureOfAyacuts">
+                        <mat-chip selected color="primary"
+                            *ngFor="let natureOfAyacut of natureOfAyacuts">
+                            {{natureOfAyacut}}
+                        </mat-chip>
+                    </mat-chip-list>
+                </div>
+            </div>
+            
+        </ng-container>
+
+    </div>
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Percentage of Fallow:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{irrigation?.fallowPercentage}}</div>
+            </div>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Percentage of Built up:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{irrigation?.builtupPercentage}}</div>
+            </div>
+            
+        </ng-container>
+
+    </div>
+</div>
+<ng-template #noContent>NA</ng-template>

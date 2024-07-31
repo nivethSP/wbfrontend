@@ -1,0 +1,27 @@
+<div fxLayoutGap="5px" class="divBodyContainer">
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Outlet Parameters:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{outletParameter?.outletParameter}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>No of Outlets:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{outletParameter?.outletCount}}</div>
+            </div>
+
+
+        </ng-container>
+
+    </div>
+    <div *ngFor="let outlet of outletParameter?.outletList;let indexOfelement=index;">
+        <div style="color: lightcoral">
+            <strong>Outlet {{indexOfelement + 1}} details:</strong>
+        </div>
+        <mat-divider></mat-divider>
+        <app-outletdetail [outlet]="outlet"></app-outletdetail>
+    </div>
+
+</div>
+<ng-template #noContent>NA</ng-template>

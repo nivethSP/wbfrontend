@@ -1,0 +1,140 @@
+<div fxLayoutGap="5px" class="divBodyContainer">
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Name of the irrigation canal:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{irrigationCanal?.name}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Nature of bed:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{irrigationCanal?.natureOfBed}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>No of irrigation supplies:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{irrigationCanal?.noOfIrrigationSupplies}}</div>
+            </div>
+
+        </ng-container>
+
+    </div>
+
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>First Season - Start:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{irrigationCanal?.contriStartFirst}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>First Season - End:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{irrigationCanal?.contriEndFirst}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Second Season - Start:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{irrigationCanal?.contriStartSecond}}</div>
+            </div>
+
+
+        </ng-container>
+
+    </div>
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Second Season - End:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{irrigationCanal?.contriEndSecond}}</div>
+            </div>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>% of source contribution:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{irrigationCanal?.percentageOfContri}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Type of Cross Section Stream:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{irrigationCanal?.typeOfCross}}</div>
+            </div>
+
+
+        </ng-container>
+
+    </div>
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Head Top width of canal feed in m:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{irrigationCanal?.headTopWidth}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Head Bed width of canal feed in m:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{irrigationCanal?.headBed}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Head Depth of canal feed in m:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{irrigationCanal?.headDepth}}</div>
+            </div>
+        </ng-container>
+
+    </div>
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Middle Top width of canal feed in m:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{irrigationCanal?.middleTopWidth}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Middle Bed width of canal feed in m:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{irrigationCanal?.middleBed}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Middle Depth of canal feed in m:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{irrigationCanal?.middleDepth}}</div>
+            </div>
+        </ng-container>
+
+    </div>
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Tail Top width of canal feed in m:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{irrigationCanal?.tailTopWidth}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Tail Bed width of canal feed in m:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{irrigationCanal?.tailBed}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Tail Depth of canal feed in m:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{irrigationCanal?.tailDepth}}</div>
+            </div>
+        </ng-container>
+
+    </div>
+
+
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="45%" fxFlex.lt-md="100"><strong>Issues in Canal Feed:</strong></div>
+                <div fxFlex="55%" fxFlex.lt-md="100">
+                    <mat-chip-list aria-label="canalFeedIssues">
+                        <mat-chip selected color="primary" *ngFor="let issue of canalFeedIssues">
+                            {{issue}}
+                        </mat-chip>
+                    </mat-chip-list>
+                </div>
+            </div>
+
+        </ng-container>
+
+    </div>
+</div>

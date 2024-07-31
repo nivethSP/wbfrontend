@@ -1,0 +1,80 @@
+<div fxLayoutGap="5px" class="divBodyContainer">
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Presence of Encroachments:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{encroachmentDetail?.presenceOfEnchroachment || 'NA'}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column" *ngIf="encroachmentDetail?.presenceOfEnchroachment === 'Yes'">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Survey Conducted:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{encroachmentDetail?.surveyConducted || 'NA'}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column" *ngIf="encroachmentDetail?.presenceOfEnchroachment === 'Yes'">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Boundary Stone:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{encroachmentDetail?.boundaryStone || 'NA'}}</div>
+            </div>
+        </ng-container>
+    </div>
+
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start" *ngIf="encroachmentDetail?.presenceOfEnchroachment === 'Yes'">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Form 1 received:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{encroachmentDetail?.form1 || 'NA'}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>No of Encroachments identified:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{encroachmentDetail?.noOfEncroachments || 'NA'}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Form 2 issued/published:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{encroachmentDetail?.form2 || 'NA'}}</div>
+            </div>
+        </ng-container>
+    </div>
+
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start" *ngIf="encroachmentDetail?.presenceOfEnchroachment === 'Yes'">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Nature of Encroachment:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{encroachmentDetail?.natureOfEncroachment || 'NA'}}</div>
+            </div>
+        </ng-container>
+    </div>
+
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start" *ngIf="encroachmentDetail?.presenceOfEnchroachment === 'Yes'">
+        <ng-container>
+            
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Status of Eviction:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{encroachmentDetail?.statusOfEviction || 'NA'}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Living Standard:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{encroachmentDetail?.livingStandard || 'NA'}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Alternative Housing:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{encroachmentDetail?.alternativeHousing || 'NA'}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Court Case:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{encroachmentDetail?.courtCase || 'NA'}}</div>
+            </div>
+        </ng-container>
+        <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+            <div fxFlex="50%" fxFlex.lt-md="100"><strong>Form 3 issued to encroachers:</strong></div>
+            <div fxFlex="50%" fxFlex.lt-md="100">{{encroachmentDetail?.form3IssueToEncroachers || 'NA'}}</div>
+        </div>
+    </div>
+</div>
+
+<ng-template #noContent>NA</ng-template>

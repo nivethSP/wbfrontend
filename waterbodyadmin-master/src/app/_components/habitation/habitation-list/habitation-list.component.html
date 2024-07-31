@@ -1,0 +1,118 @@
+<div class="container">
+    Habitations
+    <div class="flex-container" fxLayout="row" fxLayoutAlign="space-between none">
+        <mat-form-field>
+            <mat-label>Search</mat-label>
+            <input matInput placeholder="Search By Code" value="" (keyup)="applyFilter($event)">
+        </mat-form-field>
+        <div *appIsGranted="['Habitation', 'Create']">
+            <a [routerLink]="['/habitation/create']" mat-fab color="primary">
+                <mat-icon>add</mat-icon>
+            </a>
+        </div>
+
+    </div>
+    <div>
+        <div class="spinner-container" *ngIf="dataSource.loading$ | async">
+            <mat-spinner style="margin:0 auto;" mode="indeterminate" diameter="40"></mat-spinner>
+        </div>
+        <mat-table class="mat-elevation-z8" [dataSource]="dataSource" matSort matSortActive="District"
+            matSortDirection="asc" matSortDisableClear>
+
+            <ng-container matColumnDef="DistrictCode">
+                <mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by DistrictCode">District
+                    Code
+                </mat-header-cell>
+                <mat-cell *matCellDef="let resource">{{resource.DistrictCode}}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="District">
+                <mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by District">District
+                </mat-header-cell>
+                <mat-cell *matCellDef="let resource">{{resource.District}}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="BlockCode">
+                <mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by BlockCode">Block Code
+                </mat-header-cell>
+                <mat-cell *matCellDef="let resource">{{resource.BlockCode}}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="Block">
+                <mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Block">Block
+                </mat-header-cell>
+                <mat-cell *matCellDef="let resource">{{resource.Block}}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="VillageCode">
+                <mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by VillageCode">Village
+                    Code
+                </mat-header-cell>
+                <mat-cell *matCellDef="let resource">{{resource.VillageCode}}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="Village">
+                <mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Village">Village
+                </mat-header-cell>
+                <mat-cell *matCellDef="let resource">{{resource.Village}}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="HabitationCode">
+                <mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by HabitationCode">
+                    Habitation Code
+                </mat-header-cell>
+                <mat-cell *matCellDef="let resource">{{resource.HabitationCode}}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="Habitation">
+                <mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Habitation">Habitation
+                </mat-header-cell>
+                <mat-cell *matCellDef="let resource">{{resource.Habitation}}</mat-cell>
+            </ng-container>
+
+            <!-- <ng-container matColumnDef="details">
+                <mat-header-cell *matHeaderCellDef>Details
+                </mat-header-cell>
+                <mat-cell *matCellDef="let resource">
+                    <button mat-icon-button color="primary" (click)="redirectToDetails(resource.id)">
+                        <mat-icon class="mat-18">reorder</mat-icon>
+                    </button>
+                </mat-cell>
+            </ng-container> -->
+
+            <ng-container matColumnDef="update">
+                <mat-header-cell *matHeaderCellDef>Update
+                </mat-header-cell>
+                <mat-cell *matCellDef="let resource">
+                    <div *appIsGranted="['Habitation', 'Update']">
+                        <button mat-icon-button color="primary" (click)="redirectToUpdate(resource.id)">
+                            <mat-icon class="mat-18">edit</mat-icon>
+                        </button>
+                    </div>
+
+                </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="delete">
+                <mat-header-cell *matHeaderCellDef>Delete
+                </mat-header-cell>
+                <mat-cell *matCellDef="let resource">
+                    <div *appIsGranted="['Habitation', 'Delete']">
+                        <button mat-icon-button color="accent" (click)="delete(resource.id)">
+                            <mat-icon class="mat-18">delete</mat-icon>
+                        </button>
+                    </div>
+
+                </mat-cell>
+            </ng-container>
+
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+            <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+        </mat-table>
+
+        <mat-paginator [length]="this.dataLength" [pageSize]="10" [pageSizeOptions]="[10, 20, 50]"></mat-paginator>
+    </div>
+</div>

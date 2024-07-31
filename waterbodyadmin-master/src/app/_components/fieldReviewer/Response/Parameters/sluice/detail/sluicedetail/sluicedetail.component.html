@@ -1,0 +1,73 @@
+<div fxLayoutGap="5px" class="divBodyContainer">
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Type of Sluice:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{sluiceList?.typeOfSluice}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Type of Barrel:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{sluiceList?.typeOfBarrel}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Is Sluice in operation:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{sluiceList?.sluiceInOperation}}</div>
+            </div>
+
+        </ng-container>
+
+    </div>
+
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column" *ngIf="sluiceList?.areaIrrigated">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Area irrigated under the sluice in Hactare:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{sluiceList?.areaIrrigated}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Sill Level of sluice:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{sluiceList?.sillLevel}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Type of Shutter:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{sluiceList?.typeOfShutter}}</div>
+            </div>
+        </ng-container>
+
+    </div>
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Present condition of Sluice:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{sluiceList?.conditionOfSluice}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column"
+                *ngIf="sluiceList?.typeOfShutter !== 'No Shutter'">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Present condition of Shutter:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{sluiceList?.conditionOfShutter}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Does Sluice Feed any Waterbody:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{sluiceList?.feedWaterBody}}</div>
+            </div>
+
+        </ng-container>
+
+    </div>
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start" *ngIf="sluiceList?.nameOfFeedWaterBody">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Name of waterbody:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{sluiceList?.nameOfFeedWaterBody}}</div>
+            </div>
+
+        </ng-container>
+
+    </div>
+</div>

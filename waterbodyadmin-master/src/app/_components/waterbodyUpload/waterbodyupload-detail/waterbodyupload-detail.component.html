@@ -1,0 +1,233 @@
+<div class="container" *ngIf="(fileMetaData$ | async) as fileMetaData">
+    <div fxLayout="row" fxLayoutAlign="space-between">
+        <mat-label>Water Body Attribute Details</mat-label>
+    </div>
+    <mat-card>
+        <mat-card-content>
+            <div fxLayout="column wrap" fxLayoutGap="15px">
+                <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+                    <ng-container>
+                        <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                            <div fxFlex="30%" fxFlex.lt-md="100"><strong>Unique_id:</strong></div>
+                            <div fxFlex="70%" fxFlex.lt-md="100">{{fileMetaData.Unique_id}}</div>
+                        </div>
+
+                        <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                            <div fxFlex="30%" fxFlex.lt-md="100"><strong>FID:</strong></div>
+                            <div fxFlex="70%" fxFlex.lt-md="100">{{fileMetaData.FID}}</div>
+                        </div>
+
+                        <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                            <div fxFlex="30%" fxFlex.lt-md="100"><strong>CLUSTER:</strong></div>
+                            <div fxFlex="70%" fxFlex.lt-md="100">{{fileMetaData.CLUSTER}}</div>
+                        </div>
+                    </ng-container>
+
+                </div>
+                <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+                    <ng-container>
+                        <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                            <div fxFlex="30%" fxFlex.lt-md="100"><strong>TANK_NUM:</strong></div>
+                            <div fxFlex="70%" fxFlex.lt-md="100">{{fileMetaData.TANK_NUM}}</div>
+                        </div>
+
+                        <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                            <div fxFlex="30%" fxFlex.lt-md="100"><strong>Tank_Name:</strong></div>
+                            <div fxFlex="70%" fxFlex.lt-md="100">{{fileMetaData.Tank_Name}}</div>
+                        </div>
+
+                        <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                            <div fxFlex="30%" fxFlex.lt-md="100"><strong>Latitude:</strong></div>
+                            <div fxFlex="70%" fxFlex.lt-md="100">{{fileMetaData.Latitude}}</div>
+                        </div>
+                    </ng-container>
+
+                </div>
+
+                <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+                    <ng-container>
+                        <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                            <div fxFlex="30%" fxFlex.lt-md="100"><strong>Longitude:</strong></div>
+                            <div fxFlex="70%" fxFlex.lt-md="100">{{fileMetaData.Longitude}}</div>
+                        </div>
+
+                        <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                            <div fxFlex="30%" fxFlex.lt-md="100"><strong>Village:</strong></div>
+                            <div fxFlex="70%" fxFlex.lt-md="100">{{fileMetaData.Village}}</div>
+                        </div>
+
+                        <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                            <div fxFlex="30%" fxFlex.lt-md="100"><strong>Block:</strong></div>
+                            <div fxFlex="70%" fxFlex.lt-md="100">{{fileMetaData.Block}}</div>
+                        </div>
+                    </ng-container>
+
+                </div>
+
+                <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+                    <ng-container>
+                        <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                            <div fxFlex="30%" fxFlex.lt-md="100"><strong>Taluk:</strong></div>
+                            <div fxFlex="70%" fxFlex.lt-md="100">{{fileMetaData.Taluk}}</div>
+                        </div>
+
+                        <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                            <div fxFlex="30%" fxFlex.lt-md="100"><strong>District:</strong></div>
+                            <div fxFlex="70%" fxFlex.lt-md="100">{{fileMetaData.District}}</div>
+                        </div>
+
+                        <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                            <div fxFlex="30%" fxFlex.lt-md="100"><strong>Subbasin:</strong></div>
+                            <div fxFlex="70%" fxFlex.lt-md="100">{{fileMetaData.Subbasin}}</div>
+                        </div>
+                    </ng-container>
+
+                </div>
+
+                <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+                    <ng-container>
+                        <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                            <div fxFlex="30%" fxFlex.lt-md="100"><strong>Basin:</strong></div>
+                            <div fxFlex="70%" fxFlex.lt-md="100">{{fileMetaData.Basin}}</div>
+                        </div>
+
+                        <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                            <div fxFlex="30%" fxFlex.lt-md="100"><strong>Section:</strong></div>
+                            <div fxFlex="70%" fxFlex.lt-md="100">{{fileMetaData.Section}}</div>
+                        </div>
+
+                        <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                            <div fxFlex="30%" fxFlex.lt-md="100"><strong>Sub_Dn:</strong></div>
+                            <div fxFlex="70%" fxFlex.lt-md="100">{{fileMetaData.Sub_Dn}}</div>
+                        </div>
+                    </ng-container>
+
+                </div>
+
+                <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+                    <ng-container>
+                        <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                            <div fxFlex="30%" fxFlex.lt-md="100"><strong>Division:</strong></div>
+                            <div fxFlex="70%" fxFlex.lt-md="100">{{fileMetaData.Division}}</div>
+                        </div>
+
+                        <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                            <div fxFlex="30%" fxFlex.lt-md="100"><strong>Circle:</strong></div>
+                            <div fxFlex="70%" fxFlex.lt-md="100">{{fileMetaData.Circle}}</div>
+                        </div>
+
+                        <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                            <div fxFlex="30%" fxFlex.lt-md="100"><strong>Region:</strong></div>
+                            <div fxFlex="70%" fxFlex.lt-md="100">{{fileMetaData.Region}}</div>
+                        </div>
+                    </ng-container>
+
+                </div>
+
+                <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+                    <ng-container>
+                        <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                            <div fxFlex="30%" fxFlex.lt-md="100"><strong>Tank_Type:</strong></div>
+                            <div fxFlex="70%" fxFlex.lt-md="100">{{fileMetaData.Tank_Type}}</div>
+                        </div>
+
+                        <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                            <div fxFlex="30%" fxFlex.lt-md="100"><strong>Cap_MCM:</strong></div>
+                            <div fxFlex="70%" fxFlex.lt-md="100">{{fileMetaData.Cap_MCM}}</div>
+                        </div>
+
+                        <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                            <div fxFlex="30%" fxFlex.lt-md="100"><strong>FTL_m:</strong></div>
+                            <div fxFlex="70%" fxFlex.lt-md="100">{{fileMetaData.FTL_m}}</div>
+                        </div>
+                    </ng-container>
+
+                </div>
+
+                <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+                    <ng-container>
+                        <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                            <div fxFlex="30%" fxFlex.lt-md="100"><strong>MWL_m:</strong></div>
+                            <div fxFlex="70%" fxFlex.lt-md="100">{{fileMetaData.MWL_m}}</div>
+                        </div>
+
+                        <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                            <div fxFlex="30%" fxFlex.lt-md="100"><strong>TBL_m:</strong></div>
+                            <div fxFlex="70%" fxFlex.lt-md="100">{{fileMetaData.TBL_m}}</div>
+                        </div>
+
+                        <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                            <div fxFlex="30%" fxFlex.lt-md="100"><strong>FTL_m:</strong></div>
+                            <div fxFlex="70%" fxFlex.lt-md="100">{{fileMetaData.Sto_Dep_m}}</div>
+                        </div>
+                    </ng-container>
+
+                </div>
+
+                <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+                    <ng-container>
+                        <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                            <div fxFlex="30%" fxFlex.lt-md="100"><strong>Ayacut_ha:</strong></div>
+                            <div fxFlex="70%" fxFlex.lt-md="100">{{fileMetaData.Ayacut_ha}}</div>
+                        </div>
+
+                        <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                            <div fxFlex="30%" fxFlex.lt-md="100"><strong>Catch_sqkm:</strong></div>
+                            <div fxFlex="70%" fxFlex.lt-md="100">{{fileMetaData.Catch_sqkm}}</div>
+                        </div>
+
+                        <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                            <div fxFlex="30%" fxFlex.lt-md="100"><strong>Wat_Spr_ha:</strong></div>
+                            <div fxFlex="70%" fxFlex.lt-md="100">{{fileMetaData.Wat_Spr_ha}}</div>
+                        </div>
+                    </ng-container>
+
+                </div>
+
+                <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+                    <ng-container>
+                        <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                            <div fxFlex="30%" fxFlex.lt-md="100"><strong>No_of_Weir:</strong></div>
+                            <div fxFlex="70%" fxFlex.lt-md="100">{{fileMetaData.No_of_Weir}}</div>
+                        </div>
+
+                        <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                            <div fxFlex="30%" fxFlex.lt-md="100"><strong>Weir_Len_m:</strong></div>
+                            <div fxFlex="70%" fxFlex.lt-md="100">{{fileMetaData.Weir_Len_m}}</div>
+                        </div>
+
+                        <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                            <div fxFlex="30%" fxFlex.lt-md="100"><strong>No_Sluice:</strong></div>
+                            <div fxFlex="70%" fxFlex.lt-md="100">{{fileMetaData.No_Sluice}}</div>
+                        </div>
+                    </ng-container>
+
+                </div>
+
+                <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+                    <ng-container>
+                        <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                            <div fxFlex="30%" fxFlex.lt-md="100"><strong>Low_Sil_m:</strong></div>
+                            <div fxFlex="70%" fxFlex.lt-md="100">{{fileMetaData.Low_Sil_m}}</div>
+                        </div>
+
+                        <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                            <div fxFlex="30%" fxFlex.lt-md="100"><strong>Bund_Len_m:</strong></div>
+                            <div fxFlex="70%" fxFlex.lt-md="100">{{fileMetaData.Bund_Len_m}}</div>
+                        </div>
+
+                        <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                            <div fxFlex="30%" fxFlex.lt-md="100"><strong>Dis_cusec:</strong></div>
+                            <div fxFlex="70%" fxFlex.lt-md="100">{{fileMetaData.Dis_cusec}}</div>
+                        </div>
+                    </ng-container>
+
+                </div>
+            </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button type="button" mat-raised-button color="warn" (click)="onCancel()">Cancel</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
+<div id="map" class="map"></div>

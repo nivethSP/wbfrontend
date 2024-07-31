@@ -1,0 +1,22 @@
+<div fxLayoutGap="5px" class="divBodyContainer">
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="40%" fxFlex.lt-md="100"><strong>Activities to be undertaken in future:</strong></div>
+                <div fxFlex="60%" fxFlex.lt-md="100">
+                    <mat-chip-list aria-label="activitiesUndertaken">
+                        <mat-chip selected color="primary" *ngFor="let activity of activitiesUndertaken">
+                            {{activity}}
+                        </mat-chip>
+                    </mat-chip-list>
+                </div>
+            </div>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Any Other:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{ futureActivity?.otherActivityDesc || 'NA' }}</div>
+            </div>
+            
+        </ng-container>
+    </div>
+
+</div>

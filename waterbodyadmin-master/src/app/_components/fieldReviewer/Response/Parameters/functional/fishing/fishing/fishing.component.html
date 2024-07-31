@@ -1,0 +1,44 @@
+<div fxLayoutGap="5px" class="divBodyContainer">
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Nature of investment:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{fishing?.natureOfInvestment}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Month of release of fish fingerlings:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{fishing?.monthOfRelease}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Month of harvest of fish:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{fishing?.monthOfHarvest}}</div>
+            </div>
+
+        </ng-container>
+
+    </div>
+
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Approx investment in fishing in Rupees:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{fishing?.investment}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Approx return in fishing in Rupees:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{fishing?.return}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>No of dependent families:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{fishing?.noOfDependentFamilies}}</div>
+            </div>
+        </ng-container>
+
+    </div>
+    
+</div>
+<ng-template #noContent>NA</ng-template>

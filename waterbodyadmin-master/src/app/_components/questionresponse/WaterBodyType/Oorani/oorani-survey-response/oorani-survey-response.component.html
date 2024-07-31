@@ -1,0 +1,211 @@
+<mat-stepper #stepper>
+    <mat-step [stepControl]="particularsForm">
+        <ng-template matStepLabel>Fill Particulars</ng-template>
+        <form [formGroup]="particularsForm">
+            <div fxLayout="column wrap" fxLayoutGap="15px" *ngIf="this.surveyResponse">
+                <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+                    <ng-container>
+                        <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                            <mat-form-field class="full-width">
+                                <input matInput placeholder="Survey Number" formControlName="surveyNumber">
+                                <mat-error *ngIf="particularsForm.controls['surveyNumber'].hasError('required')">
+                                    Survey Number is <strong>required</strong>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                            <mat-form-field class="full-width">
+                                <mat-label>Type of the Waterbody</mat-label>
+                                <mat-select formControlName="waterbodyType">
+                                    <mat-option *ngFor="
+                                      let waterBody of waterbodyTypes" [value]="waterBody.name">
+                                        {{ waterBody.name }}
+                                    </mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="particularsForm.controls['waterbodyType'].hasError('required')">
+                                    You must make a selection
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+
+            <div fxLayout="column wrap" fxLayoutGap="15px">
+                <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+                    <ng-container>
+                        <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                            <mat-form-field class="full-width">
+                                <mat-label>Ownership</mat-label>
+                                <mat-select formControlName="ownership">
+                                    <mat-option *ngFor="
+                                      let owner of ownerShips" [value]="owner.name">
+                                        {{ owner.name }}
+                                    </mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="particularsForm.controls['ownership'].hasError('required')">
+                                    You must make a selection
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                            <mat-form-field class="full-width">
+                                <mat-label>Does the waterbody exist?</mat-label>
+                                <mat-select formControlName="waterBodyAvailability"
+                                    [(ngModel)]="waterBodyTypeAvailability">
+                                    <mat-option *ngFor="
+                                    let owner of profiles" [value]="owner.id">
+                                        {{ owner.name }}
+                                    </mat-option>
+                                </mat-select>
+                                <mat-error
+                                    *ngIf="particularsForm.controls['waterBodyAvailability'].hasError('required')">
+                                    You must make a selection
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+
+            <div>
+                <button mat-button matStepperNext color="primary"
+                    (click)="onNext(stepper,'ParticularsResponse')">Next</button>
+            </div>
+        </form>
+
+    </mat-step>
+
+    <!-- Hydrological Parameters Start -->
+    <mat-step [stepControl]="hydrologicalResponseForm">
+        <ng-template matStepLabel>Hydrologic Parameters</ng-template>
+        <form [formGroup]="hydrologicalResponseForm">
+            <div fxLayout="column wrap" fxLayoutGap="15px">
+                <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+                    <ng-container>
+                        <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                            <mat-form-field class="full-width">
+                                <input matInput placeholder="Name of Oorani" formControlName="name">
+                                <mat-error *ngIf="hydrologicalResponseForm.controls['name'].hasError('required')">
+                                    Name of Oorani is <strong>required</strong>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                            <mat-form-field class="full-width">
+                                <input matInput type="number" placeholder="Water Spread Area in Hactares"
+                                    formControlName="waterSpreadArea">
+                            </mat-form-field>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+
+            <div fxLayout="column wrap" fxLayoutGap="15px">
+                <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+                    <ng-container>
+                        <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                            <mat-form-field class="full-width">
+                                <input matInput type="number" placeholder="Original Capacity in cum"
+                                    formControlName="originalCapacity">
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                            <mat-form-field class="full-width">
+                                <input matInput type="number" placeholder="No of Fillings"
+                                    formControlName="noOfFillings">
+                            </mat-form-field>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+
+            <div fxLayout="column wrap" fxLayoutGap="15px">
+                <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+                    <ng-container>
+                        <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                            <mat-form-field class="full-width">
+                                <mat-label>Month of First Filling</mat-label>
+                                <mat-select formControlName="monthOfFirstFilling">
+                                    <mat-option *ngFor="
+                                    let month of monthFillings" [value]="month.name">
+                                        {{ month.name }}
+                                    </mat-option>
+                                </mat-select>
+
+                            </mat-form-field>
+                        </div>
+                        <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                            <mat-form-field class="full-width">
+                                <mat-label>Month of Dry up / Scarcity</mat-label>
+                                <mat-select formControlName="monthOfFirstFilling">
+                                    <mat-option *ngFor="
+                                    let month of dryFillings" [value]="month.name">
+                                        {{ month.name }}
+                                    </mat-option>
+                                </mat-select>
+
+                            </mat-form-field>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+
+            <div fxLayout="column wrap" fxLayoutGap="15px">
+                <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+                    <ng-container>
+                        <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                            <mat-form-field class="full-width">
+                                <input matInput type="number" placeholder="No. of Sources of Water Supply"
+                                    formControlName="noOfSources">
+                            </mat-form-field>
+                        </div>
+
+                    </ng-container>
+                </div>
+            </div>
+
+            <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+                <ng-container>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                        <mat-label>Select Sources of supply</mat-label>
+                        <mat-selection-list #sourcesList
+                            (selectionChange)="onChange(sourcesList.selectedOptions.selected)">
+                            <mat-list-option *ngFor="let source of sourcesofSupply" [value]="source" [selected]="false">
+                                {{source.name}}
+                            </mat-list-option>
+                        </mat-selection-list>
+                    </div>
+                    <!--  <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                        <mat-label>Select Pioritizing source of supply (Based on contribution)</mat-label>
+                        <mat-selection-list #prioritySourcesList formControlName="prioritizesupplySource"
+                            (selectionChange)="onPrioritizeSourceChange(prioritySourcesList.selectedOptions.selected)">
+                            <mat-list-option *ngFor="let source of sourcesofSupply" [value]="source">
+                                {{source.name}}
+                            </mat-list-option>
+                        </mat-selection-list>
+                    </div> -->
+                </ng-container>
+            </div>
+
+            <div>
+                <button mat-button matStepperPrevious color="primary">Back</button>
+                <button mat-button matStepperNext color="primary"
+                    (click)="onNext(stepper,'HydroLogicalResponse')">Next</button>
+            </div>
+        </form>
+
+    </mat-step>
+    <!-- Hydrological Parameters End -->
+
+
+    <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        You are now done.
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+        </div>
+    </mat-step>
+
+
+</mat-stepper>

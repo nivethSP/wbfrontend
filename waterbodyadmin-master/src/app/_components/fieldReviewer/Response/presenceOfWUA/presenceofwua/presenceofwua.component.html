@@ -1,0 +1,53 @@
+<div fxLayoutGap="5px" class="divBodyContainer">
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Presence of Water User Association(WUA):</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{presenceOfWUA?.presenceOfWUA}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Name of Water User Association:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{presenceOfWUA?.nameOfWUAassociation}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Election Conducted for WUA:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{presenceOfWUA?.electionConductedWUA}}</div>
+            </div>
+
+        </ng-container>
+
+    </div>
+
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Number of EC members:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{presenceOfWUA?.noOfECmembers}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Registration Number:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{presenceOfWUA?.registrationNo}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>President Name:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{presenceOfWUA?.presidentName}}</div>
+            </div>
+        </ng-container>
+
+    </div>
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Contact No:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{presenceOfWUA?.contactNo}}</div>
+            </div>
+           
+        </ng-container>
+
+    </div>
+</div>
+<ng-template #noContent>NA</ng-template>

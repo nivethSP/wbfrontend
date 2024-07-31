@@ -1,0 +1,140 @@
+<form [formGroup]="waterBodyUploadForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>Add Water Body</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>District</mat-label>
+            <mat-select formControlName="district" (selectionChange)="ondistrictchange($event.value)">
+              <mat-option *ngFor="
+                    let district of districts" [value]="district.id">
+                {{ district.name }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="waterBodyUploadForm.controls['district'].hasError('required')">
+              You must make a selection
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Taluk</mat-label>
+            <mat-select formControlName="taluk">
+              <mat-option *ngFor="
+                      let taluk of taluks" [value]="taluk.id">
+                {{ taluk.name }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="waterBodyUploadForm.controls['taluk'].hasError('required')">
+              You must make a selection
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Block</mat-label>
+            <mat-select formControlName="block" (selectionChange)="onblockchange($event.value)">
+              <mat-option *ngFor="
+                      let block of blocks" [value]="block.id">
+                {{ block.name }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="waterBodyUploadForm.controls['block'].hasError('required')">
+              You must make a selection
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Village</mat-label>
+            <mat-select formControlName="village">
+              <mat-option *ngFor="
+                      let panchayat of panchayats" [value]="panchayat.id">
+                {{ panchayat.name }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="waterBodyUploadForm.controls['village'].hasError('required')">
+              You must make a selection
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-label>Water Body Type</mat-label>
+            <mat-select formControlName="waterbodytype">
+              <mat-option *ngFor="
+                      let waterBodyType of waterBodyTypes" [value]="waterBodyType.id">
+                {{ waterBodyType.name }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="waterBodyUploadForm.controls['waterbodytype'].hasError('required')">
+              You must make a selection
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Enter Water Body Id" formControlName="waterbodyId">
+            <mat-error *ngIf="waterBodyUploadForm.controls['waterbodyId'].hasError('required')">
+              Waterbody Id is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Enter Water Body Name" formControlName="waterbodyName">
+            <mat-error *ngIf="waterBodyUploadForm.controls['waterbodyName'].hasError('required')">
+              WaterBody Name is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <div>
+              <mat-toolbar>
+                <!-- Display files names -->
+                <input matInput formControlName="fileName" readonly />
+                <!-- Browse Button -->
+                <button mat-flat-button color="primary">Browse File (*.kml)</button>
+              </mat-toolbar>
+              <!-- Fetch selected filed on change -->
+              <input type="file" #fileInput id="uploadFile" (change)="onFileSelect($event)" name="uploadFile"
+                multiple="multiple" accept="application/vnd.google-earth.kml+xml" />
+            </div>
+          </mat-form-field>
+        </div>
+      </div>
+
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit" [class.spinner]="loading"
+        [disabled]="!waterBodyUploadForm.valid">Submit</button>
+      <button type="button" mat-raised-button color="warn" (click)="onCancel()">Cancel</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

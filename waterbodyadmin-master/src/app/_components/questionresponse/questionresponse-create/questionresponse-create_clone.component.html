@@ -1,0 +1,37 @@
+<div class="container">
+    Register Waterbody Survey Response
+    <form [formGroup]="questionForm" novalidate>
+        <mat-form-field class="full-width">
+            <mat-label>Select WaterBody Type</mat-label>
+            <mat-select formControlName="waterbodytype" (selectionChange)="onchange($event.value)">
+                <mat-option *ngFor="
+            let type of waterbodyTypes" [value]="type">
+                    {{ type.name }}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="questionForm.controls['waterbodytype'].hasError('required')">
+                You must make a selection
+            </mat-error>
+        </mat-form-field>
+    </form>
+    <mat-card class="flex" *ngIf="selectedType != ''">
+        <mat-card-header>
+            <mat-card-title>{{selectedType}} Survey Questions</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="scrollable" *ngIf="selectedType === 'Irrigation Tank'">
+                <tank-questions [waterbodyType]="selectedId"></tank-questions>
+            </div>
+            <div *ngIf="selectedType === 'Pond'">
+                <pond-questions></pond-questions>
+            </div>
+            <div *ngIf="selectedType === 'Oorani'">
+                <oorani-questions></oorani-questions>
+            </div>
+            <div *ngIf="selectedType === 'Temple Tank'">
+                <templetank-questions></templetank-questions>
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+</div>

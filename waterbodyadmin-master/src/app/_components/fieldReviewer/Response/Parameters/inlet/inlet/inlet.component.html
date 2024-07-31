@@ -1,0 +1,28 @@
+<div fxLayoutGap="5px" class="divBodyContainer">
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Inlet Parameters:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{inletParameter?.inletParameter}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>No of inlets:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{inletParameter?.inletCount}}</div>
+            </div>
+
+            
+        </ng-container>
+
+    </div>
+    <div *ngFor="let inlet of inletParameter?.inletList;let indexOfelement=index;">
+        <div style="color: lightcoral">
+            <strong>Inlet {{indexOfelement + 1}} details:</strong>
+        </div>
+        <mat-divider></mat-divider>
+       <app-inletdetail [inlet]="inlet"></app-inletdetail>
+    </div>
+   
+</div>
+<ng-template #noContent>NA</ng-template>
+

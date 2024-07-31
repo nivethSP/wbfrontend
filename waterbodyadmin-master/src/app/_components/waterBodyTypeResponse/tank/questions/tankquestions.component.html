@@ -1,0 +1,1568 @@
+<mat-stepper linear #stepper>
+  <mat-step [stepControl]="particularsForm">
+    <ng-template matStepLabel>Fill Particulars</ng-template>
+    <form [formGroup]="particularsForm">
+      <div fxLayout="column wrap" fxLayoutGap="15px">
+        <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+          <ng-container>
+            <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Enter Unique ID of the water body" formControlName="uniqueid">
+                <mat-error *ngIf="particularsForm.controls['uniqueid'].hasError('required')">
+                  Uniqueid is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+              <mat-form-field class="full-width">
+                <mat-label>Name of the Taluk</mat-label>
+                <mat-select formControlName="taluk">
+                  <mat-option *ngFor="
+                        let taluk of taluks" [value]="taluk.id">
+                    {{ taluk.name }}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="particularsForm.controls['taluk'].hasError('required')">
+                  You must make a selection
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </ng-container>
+        </div>
+        <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+          <ng-container>
+            <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+              <mat-form-field class="full-width">
+                <mat-label>Name of the Block</mat-label>
+                <mat-select formControlName="block" (selectionChange)="onblockchange($event.value)">
+                  <mat-option *ngFor="
+                      let block of blocks" [value]="block.id">
+                    {{ block.name }}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="particularsForm.controls['block'].hasError('required')">
+                  You must make a selection
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+              <mat-form-field class="full-width">
+                <mat-label>Name of the Village Panchayat</mat-label>
+                <mat-select formControlName="panchayat">
+                  <mat-option *ngFor="
+                      let panchayat of panchayats" [value]="panchayat.id">
+                    {{ panchayat.name }}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="particularsForm.controls['panchayat'].hasError('required')">
+                  You must make a selection
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </ng-container>
+        </div>
+        <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+          <ng-container>
+            <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Name of the Village" formControlName="village">
+                <mat-error *ngIf="particularsForm.controls['village'].hasError('required')">
+                  Village is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Survey No" formControlName="surveyno">
+                <mat-error *ngIf="particularsForm.controls['surveyno'].hasError('required')">
+                  Surveyno is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </ng-container>
+        </div>
+        <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+          <ng-container>
+            <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+              <mat-form-field class="full-width">
+                <mat-label>Ownership</mat-label>
+                <mat-select formControlName="ownership">
+                  <mat-option *ngFor="
+                    let ownership of ownerships" [value]="ownership.id">
+                    {{ ownership.name }}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="particularsForm.controls['ownership'].hasError('required')">
+                  You must make a selection
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+              <mat-form-field class="full-width">
+                <mat-label>Type of tank</mat-label>
+                <mat-select formControlName="tanktype">
+                  <mat-option *ngFor="
+                    let tanktype of tanktypes" [value]="tanktype.id">
+                    {{ tanktype.name }}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="particularsForm.controls['tanktype'].hasError('required')">
+                  You must make a selection
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+
+      <div>
+        <button mat-button matStepperNext color="primary" (click)="onNext(stepper,'ParticularsResponse')">Next</button>
+      </div>
+    </form>
+
+  </mat-step>
+  <mat-step [stepControl]="hydrologicalResponseForm">
+    <ng-template matStepLabel>Fill Hydrological Parameters</ng-template>
+    <form [formGroup]="hydrologicalResponseForm">
+      <div fxLayout="column wrap" fxLayoutGap="15px">
+        <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+          <ng-container>
+            <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Enter Tank Name" formControlName="tankName">
+                <mat-error *ngIf="hydrologicalResponseForm.controls['tankName'].hasError('required')">
+                  Tank name is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+              <mat-form-field class="full-width">
+                <input type="number" matInput placeholder="Enter Water Spread Area at Full Tank Level in Hactare"
+                  formControlName="waterspreadArea">
+                <mat-error *ngIf="hydrologicalResponseForm.controls['waterspreadArea'].hasError('required')">
+                  Waterspreadarea is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </ng-container>
+        </div>
+        <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+          <ng-container>
+            <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+              <mat-form-field class="full-width">
+                <input type="number" matInput placeholder="Enter Registered Ayacut in Hactare"
+                  formControlName="registeredAyacut">
+                <mat-error *ngIf="hydrologicalResponseForm.controls['registeredAyacut'].hasError('required')">
+                  RegisteredAyacut is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+              <mat-form-field class="full-width">
+                <input type="number" matInput placeholder="Enter Original Capacity in MCM" formControlName="capacity">
+                <mat-error *ngIf="hydrologicalResponseForm.controls['capacity'].hasError('required')">
+                  Capacity is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </ng-container>
+        </div>
+        <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+          <ng-container>
+            <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+              <mat-form-field class="full-width">
+                <input type="number" matInput placeholder="Enter No. of fillings" formControlName="numberoffillings">
+                <mat-error *ngIf="hydrologicalResponseForm.controls['numberoffillings'].hasError('required')">
+                  Numberoffillings is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+              <mat-form-field class="full-width">
+                <mat-label>Month of first Filling</mat-label>
+                <mat-select formControlName="firstmonthfilling">
+                  <mat-option *ngFor="
+                    let month of monthFillings" [value]="month.id">
+                    {{ month.name }}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="hydrologicalResponseForm.controls['firstmonthfilling'].hasError('required')">
+                  You must make a selection
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </ng-container>
+        </div>
+        <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+          <ng-container>
+            <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+              <mat-form-field class="full-width">
+                <mat-label>Water Availability</mat-label>
+                <mat-select formControlName="waterAvailability">
+                  <mat-option *ngFor="
+                    let wateravailability of waterAvailabilites" [value]="wateravailability.id">
+                    {{ wateravailability.name }}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="hydrologicalResponseForm.controls['waterAvailability'].hasError('required')">
+                  You must make a selection
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+              <mat-form-field class="full-width">
+                <mat-label>Month of dry up / Scarcity</mat-label>
+                <mat-select formControlName="monthdryup">
+                  <mat-option *ngFor="
+                    let month of dryFillings" [value]="month.id">
+                    {{ month.name }}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="hydrologicalResponseForm.controls['monthdryup'].hasError('required')">
+                  You must make a selection
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </ng-container>
+        </div>
+        <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+          <ng-container>
+            <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+              <mat-form-field class="full-width">
+                <input type="number" matInput placeholder="No. of Sources of Water Supply"
+                  formControlName="numberofsources">
+                <mat-error *ngIf="hydrologicalResponseForm.controls['numberofsources'].hasError('required')">
+                  Numberofsources is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+              <mat-form-field class="full-width">
+                <mat-label>Type of Catchment</mat-label>
+                <mat-select formControlName="catchmentType">
+                  <mat-option *ngFor="
+                    let type of catchmentTypes" [value]="type.id">
+                    {{ type.name }}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="hydrologicalResponseForm.controls['catchmentType'].hasError('required')">
+                  You must make a selection
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+          </ng-container>
+        </div>
+        <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+          <ng-container>
+            <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+              <mat-label>Select Sources of supply</mat-label>
+              <mat-selection-list #sourcesList formControlName="supplySource"
+                (selectionChange)="onChange(sourcesList.selectedOptions.selected)">
+                <mat-list-option *ngFor="let source of sourcesofSupply" [value]="source">
+                  {{source.name}}
+                </mat-list-option>
+              </mat-selection-list>
+            </div>
+            <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+              <mat-label>Select Pioritizing source of supply (Based on contribution)</mat-label>
+              <mat-selection-list #prioritySourcesList formControlName="prioritizesupplySource"
+                (selectionChange)="onPrioritizeSourceChange(prioritySourcesList.selectedOptions.selected)">
+                <mat-list-option *ngFor="let source of sourcesofSupply" [value]="source">
+                  {{source.name}}
+                </mat-list-option>
+              </mat-selection-list>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious color="primary">Back</button>
+        <button mat-button matStepperNext color="primary" (click)="onNext(stepper,'HydrologicalResponse')">Next</button>
+      </div>
+    </form>
+
+  </mat-step>
+
+  <mat-step [stepControl]="supplySourceForm">
+    <ng-template matStepLabel>Source of supply</ng-template>
+    <form [formGroup]="supplySourceForm">
+      <div class="source1SupplyContainer">
+        <mat-label>Select Source1</mat-label>
+        <mat-selection-list #sources1List formControlName="source1"
+          (selectionChange)="onsource1Change(sources1List.selectedOptions.selected)">
+          <mat-list-option *ngFor="let source of sourcesofSupply" [value]="source">
+            {{source.name}}
+          </mat-list-option>
+        </mat-selection-list>
+      </div>
+      <div>
+
+        <mat-tab-group backgroundColor="primary" *ngIf="sources1List.selectedOptions.selected.length > 0">
+          <mat-tab label="Free catchment" *ngIf="isFreeCatchmentType">
+            <form [formGroup]="freeCatchmentResponseForm">
+              <div fxLayout="column wrap" fxLayoutGap="15px">
+                <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+                  <ng-container>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <input type="number" matInput placeholder="Percentage of source Contribution"
+                          formControlName="contributiontypepercentage">
+                        <mat-error
+                          *ngIf="freeCatchmentResponseForm.controls['contributiontypepercentage'].hasError('required')">
+                          Contribution Percentage is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <mat-label>Source contribution season - Start</mat-label>
+                        <mat-select formControlName="seassonstart">
+                          <mat-option *ngFor="
+                            let month of monthFillings" [value]="month.id">
+                            {{ month.name }}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="freeCatchmentResponseForm.controls['seassonstart'].hasError('required')">
+                          You must make a selection
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                  </ng-container>
+                </div>
+
+                <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+                  <ng-container>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <mat-label>Source contribution season - End</mat-label>
+                        <mat-select formControlName="seassonend">
+                          <mat-option *ngFor="
+                            let month of monthFillings" [value]="month.id">
+                            {{ month.name }}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="freeCatchmentResponseForm.controls['seassonend'].hasError('required')">
+                          You must make a selection
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <mat-label>Type of cross section of Stream</mat-label>
+                        <mat-select formControlName="streamtype">
+                          <mat-option *ngFor="
+                            let stream of crossSectionStreams" [value]="stream.id">
+                            {{ stream.name }}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="freeCatchmentResponseForm.controls['streamtype'].hasError('required')">
+                          You must make a selection
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                  </ng-container>
+                </div>
+                <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+                  <ng-container>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <input type="number" matInput placeholder="Top width of stream in m"
+                          formControlName="streamheadtopwidth">
+                        <mat-error
+                          *ngIf="freeCatchmentResponseForm.controls['streamheadtopwidth'].hasError('required')">
+                          Top width of stream in m is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <input type="number" matInput placeholder="Bed of stream in m" formControlName="streamheadbed">
+                        <mat-error *ngIf="freeCatchmentResponseForm.controls['streamheadbed'].hasError('required')">
+                          Bed of stream in m is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                  </ng-container>
+                </div>
+
+                <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+                  <ng-container>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <input type="number" matInput placeholder="Depth of stream in m"
+                          formControlName="streamheaddepth">
+                        <mat-error *ngIf="freeCatchmentResponseForm.controls['streamheaddepth'].hasError('required')">
+                          Depth of stream in m is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <input type="number" matInput placeholder="Top width of stream in m"
+                          formControlName="streammiddletopwidth">
+                        <mat-error
+                          *ngIf="freeCatchmentResponseForm.controls['streammiddletopwidth'].hasError('required')">
+                          Bed of stream in m is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                  </ng-container>
+                </div>
+
+                <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+                  <ng-container>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <input type="number" matInput placeholder="Bed of stream in m"
+                          formControlName="streammiddlebed">
+                        <mat-error *ngIf="freeCatchmentResponseForm.controls['streammiddlebed'].hasError('required')">
+                          Bed of stream in m is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <input type="number" matInput placeholder="Depth of stream in m"
+                          formControlName="streammiddledepth">
+                        <mat-error *ngIf="freeCatchmentResponseForm.controls['streammiddledepth'].hasError('required')">
+                          Depth of stream in m is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                  </ng-container>
+                </div>
+
+                <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+                  <ng-container>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <input type="number" matInput placeholder="Top width of stream in m"
+                          formControlName="streamtailendtopwidth">
+                        <mat-error
+                          *ngIf="freeCatchmentResponseForm.controls['streamtailendtopwidth'].hasError('required')">
+                          Top width of stream in m is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <input type="number" matInput placeholder="Bed of stream in m"
+                          formControlName="streamtailendbed">
+                        <mat-error *ngIf="freeCatchmentResponseForm.controls['streamtailendbed'].hasError('required')">
+                          Bed of stream in m is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                  </ng-container>
+                </div>
+
+                <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+                  <ng-container>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <input type="number" matInput placeholder="Depth of stream in m"
+                          formControlName="streamtailenddepth">
+                        <mat-error
+                          *ngIf="freeCatchmentResponseForm.controls['streamtailenddepth'].hasError('required')">
+                          Depth of stream in m is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-label>Issues in Stream</mat-label>
+                      <mat-selection-list #crossSectionStreamList formControlName="streamIssues"
+                        (selectionChange)="onstreamIssuesChange(crossSectionStreamList.selectedOptions.selected)">
+                        <mat-list-option *ngFor="let issue of streamIssues" [value]="issue">
+                          {{issue.name}}
+                        </mat-list-option>
+                      </mat-selection-list>
+                    </div>
+
+                  </ng-container>
+                </div>
+
+              </div>
+            </form>
+          </mat-tab>
+          <mat-tab label="Supply from Upper Tank Sluice" *ngIf="isSupplyFromUpperTankSluice">
+            <form [formGroup]="upperTankSluiceResponseForm">
+              <div fxLayout="column wrap" fxLayoutGap="15px">
+                <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+                  <ng-container>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <input matInput placeholder="Name of the upper tank" formControlName="tankName">
+                        <mat-error *ngIf="upperTankSluiceResponseForm.controls['tankName'].hasError('required')">
+                          Tank Name is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <input type="number" matInput placeholder="Percentage of source Contribution"
+                          formControlName="contributionpercentage">
+                        <mat-error
+                          *ngIf="upperTankSluiceResponseForm.controls['contributionpercentage'].hasError('required')">
+                          Contribution Percentage is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+
+                  </ng-container>
+                </div>
+
+                <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+                  <ng-container>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <mat-label>Source contribution season - Start</mat-label>
+                        <mat-select formControlName="seassonstart">
+                          <mat-option *ngFor="
+                            let month of monthFillings" [value]="month.id">
+                            {{ month.name }}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="upperTankSluiceResponseForm.controls['seassonstart'].hasError('required')">
+                          You must make a selection
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <mat-label>Source contribution season - End</mat-label>
+                        <mat-select formControlName="seassonend">
+                          <mat-option *ngFor="
+                            let month of monthFillings" [value]="month.id">
+                            {{ month.name }}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="upperTankSluiceResponseForm.controls['seassonend'].hasError('required')">
+                          You must make a selection
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+
+                  </ng-container>
+                </div>
+                <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+                  <ng-container>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <mat-label>Type of cross section of Stream</mat-label>
+                        <mat-select formControlName="streamtype">
+                          <mat-option *ngFor="
+                            let stream of crossSectionStreams" [value]="stream.id">
+                            {{ stream.name }}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="upperTankSluiceResponseForm.controls['streamtype'].hasError('required')">
+                          You must make a selection
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <input type="number" matInput placeholder="Top width of stream in m"
+                          formControlName="streamheadtopwidth">
+                        <mat-error
+                          *ngIf="upperTankSluiceResponseForm.controls['streamheadtopwidth'].hasError('required')">
+                          Top width of stream in m is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+
+                  </ng-container>
+                </div>
+
+                <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+                  <ng-container>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <input type="number" matInput placeholder="Bed of stream in m" formControlName="streamheadbed">
+                        <mat-error *ngIf="upperTankSluiceResponseForm.controls['streamheadbed'].hasError('required')">
+                          Bed of stream in m is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <input type="number" matInput placeholder="Depth of stream in m"
+                          formControlName="streamheaddepth">
+                        <mat-error *ngIf="upperTankSluiceResponseForm.controls['streamheaddepth'].hasError('required')">
+                          Depth of stream in m is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+
+                  </ng-container>
+                </div>
+
+                <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+                  <ng-container>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <input type="number" matInput placeholder="Top width of stream in m"
+                          formControlName="streammiddletopwidth">
+                        <mat-error
+                          *ngIf="upperTankSluiceResponseForm.controls['streammiddletopwidth'].hasError('required')">
+                          Bed of stream in m is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <input type="number" matInput placeholder="Bed of stream in m"
+                          formControlName="streammiddlebed">
+                        <mat-error *ngIf="upperTankSluiceResponseForm.controls['streammiddlebed'].hasError('required')">
+                          Bed of stream in m is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+
+                  </ng-container>
+                </div>
+
+                <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+                  <ng-container>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <input type="number" matInput placeholder="Depth of stream in m"
+                          formControlName="streammiddledepth">
+                        <mat-error
+                          *ngIf="upperTankSluiceResponseForm.controls['streammiddledepth'].hasError('required')">
+                          Depth of stream in m is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <input type="number" matInput placeholder="Top width of stream in m"
+                          formControlName="streamtailendtopwidth">
+                        <mat-error
+                          *ngIf="upperTankSluiceResponseForm.controls['streamtailendtopwidth'].hasError('required')">
+                          Top width of stream in m is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+
+                  </ng-container>
+                </div>
+
+                <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+                  <ng-container>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <input type="number" matInput placeholder="Bed of stream in m"
+                          formControlName="streamtailendbed">
+                        <mat-error
+                          *ngIf="upperTankSluiceResponseForm.controls['streamtailendbed'].hasError('required')">
+                          Bed of stream in m is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <input type="number" matInput placeholder="Depth of stream in m"
+                          formControlName="streamtailenddepth">
+                        <mat-error
+                          *ngIf="upperTankSluiceResponseForm.controls['streamtailenddepth'].hasError('required')">
+                          Depth of stream in m is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                  </ng-container>
+                </div>
+                <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+                  <ng-container>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-label>Issues in Stream</mat-label>
+                      <mat-selection-list #crossSectionStreamList formControlName="sluiceStreamIssues"
+                        (selectionChange)="onsluiceStreamIssuesChange(crossSectionStreamList.selectedOptions.selected)">
+                        <mat-list-option *ngFor="let issue of streamIssues" [value]="issue">
+                          {{issue.name}}
+                        </mat-list-option>
+                      </mat-selection-list>
+                    </div>
+                  </ng-container>
+                </div>
+
+              </div>
+            </form>
+          </mat-tab>
+          <mat-tab label="Irrigation canal" *ngIf="isIrrigationCanal">
+            <form [formGroup]="irrigationCanalResponseForm">
+              <div fxLayout="column wrap" fxLayoutGap="15px">
+                <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+                  <ng-container>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <input matInput placeholder="Name of the irrigation canal" formControlName="canalName">
+                        <mat-error *ngIf="irrigationCanalResponseForm.controls['canalName'].hasError('required')">
+                          Canal Name is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <input type="number" matInput placeholder="Nature of bed" formControlName="bednature">
+                        <mat-error *ngIf="irrigationCanalResponseForm.controls['bednature'].hasError('required')">
+                          Nature of bed is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+
+                  </ng-container>
+                </div>
+
+                <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+                  <ng-container>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <input type="number" matInput placeholder="No. of irrigation supplies"
+                          formControlName="numberofSupplies">
+                        <mat-error
+                          *ngIf="irrigationCanalResponseForm.controls['numberofSupplies'].hasError('required')">
+                          No. of irrigation supplies is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <mat-label>Source contribution for first supply season - Start</mat-label>
+                        <mat-select formControlName="firstseassonstart">
+                          <mat-option *ngFor="
+                            let month of monthFillings" [value]="month.id">
+                            {{ month.name }}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error
+                          *ngIf="irrigationCanalResponseForm.controls['firstseassonstart'].hasError('required')">
+                          You must make a selection
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+
+                  </ng-container>
+                </div>
+                <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+                  <ng-container>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <mat-label>Source contribution for first supply season - End</mat-label>
+                        <mat-select formControlName="firstseassonend">
+                          <mat-option *ngFor="
+                            let month of monthFillings" [value]="month.id">
+                            {{ month.name }}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="irrigationCanalResponseForm.controls['firstseassonend'].hasError('required')">
+                          You must make a selection
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <mat-label>Source contribution for second supply season - Start</mat-label>
+                        <mat-select formControlName="secondseassonstart">
+                          <mat-option *ngFor="
+                            let month of monthFillings" [value]="month.id">
+                            {{ month.name }}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error
+                          *ngIf="irrigationCanalResponseForm.controls['secondseassonstart'].hasError('required')">
+                          You must make a selection
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                  </ng-container>
+                </div>
+
+                <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+                  <ng-container>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <mat-label>Source contribution for second supply season - End</mat-label>
+                        <mat-select formControlName="secondseassonend">
+                          <mat-option *ngFor="
+                            let month of monthFillings" [value]="month.id">
+                            {{ month.name }}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error
+                          *ngIf="irrigationCanalResponseForm.controls['secondseassonend'].hasError('required')">
+                          You must make a selection
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <input type="number" matInput placeholder="Percentage of source Contribution"
+                          formControlName="contributiontypepercentage">
+                        <mat-error
+                          *ngIf="irrigationCanalResponseForm.controls['contributiontypepercentage'].hasError('required')">
+                          Depth of stream in m is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+
+                  </ng-container>
+                </div>
+
+                <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+                  <ng-container>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <mat-label>Type of cross section of Stream</mat-label>
+                        <mat-select formControlName="streamtype">
+                          <mat-option *ngFor="
+                            let stream of crossSectionStreams" [value]="stream.id">
+                            {{ stream.name }}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="irrigationCanalResponseForm.controls['streamtype'].hasError('required')">
+                          You must make a selection
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <input type="number" matInput placeholder="Top width of stream in m"
+                          formControlName="streamtopwidth">
+                        <mat-error *ngIf="irrigationCanalResponseForm.controls['streamtopwidth'].hasError('required')">
+                          Top width of stream in m is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+
+                  </ng-container>
+                </div>
+
+                <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+                  <ng-container>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <input type="number" matInput placeholder="Bed of stream in m" formControlName="streambed">
+                        <mat-error *ngIf="irrigationCanalResponseForm.controls['streambed'].hasError('required')">
+                          Bed of stream in m is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <input type="number" matInput placeholder="Depth of stream in m" formControlName="streamdepth">
+                        <mat-error *ngIf="irrigationCanalResponseForm.controls['streamdepth'].hasError('required')">
+                          Depth of stream in m is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+
+                  </ng-container>
+                </div>
+
+                <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+                  <ng-container>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-label>Issues in Stream</mat-label>
+                      <mat-selection-list #IrrigationCanalStreamIssues formControlName="irrigationCanalIssues"
+                        (selectionChange)="onIrrigationCanalStreamIssuesChange(IrrigationCanalStreamIssues.selectedOptions.selected)">
+                        <mat-list-option *ngFor="let issue of streamIssues" [value]="issue">
+                          {{issue.name}}
+                        </mat-list-option>
+                      </mat-selection-list>
+                    </div>
+                  </ng-container>
+                </div>
+
+              </div>
+            </form>
+          </mat-tab>
+          <mat-tab label="Surplus from sluice of upper tank" *ngIf="isSurplusSluiceUpperTank">
+            <form [formGroup]="surplusSluiceResponseForm">
+              <div fxLayout="column wrap" fxLayoutGap="15px">
+                <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+                  <ng-container>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <input matInput placeholder="Name of the upper tank" formControlName="tankName">
+                        <mat-error *ngIf="surplusSluiceResponseForm.controls['tankName'].hasError('required')">
+                          Tank Name is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <input type="number" matInput placeholder="Percentage of source Contribution"
+                          formControlName="contributiontypepercentage">
+                        <mat-error
+                          *ngIf="surplusSluiceResponseForm.controls['contributiontypepercentage'].hasError('required')">
+                          Percentage of source Contribution is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                  </ng-container>
+                </div>
+
+                <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+                  <ng-container>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <mat-label>Source contribution season - Start</mat-label>
+                        <mat-select formControlName="seassonstart">
+                          <mat-option *ngFor="
+                            let month of monthFillings" [value]="month.id">
+                            {{ month.name }}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="surplusSluiceResponseForm.controls['seassonstart'].hasError('required')">
+                          You must make a selection
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <mat-label>Source contribution season - End</mat-label>
+                        <mat-select formControlName="seassonend">
+                          <mat-option *ngFor="
+                            let month of monthFillings" [value]="month.id">
+                            {{ month.name }}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="surplusSluiceResponseForm.controls['seassonend'].hasError('required')">
+                          You must make a selection
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                  </ng-container>
+                </div>
+
+              </div>
+            </form>
+          </mat-tab>
+          <mat-tab label="From river/stream" *ngIf="isRiverStream">
+            <form [formGroup]="riverStreamResponseForm">
+              <div fxLayout="column wrap" fxLayoutGap="15px">
+                <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+                  <ng-container>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <input matInput placeholder="Name of the river/stream" formControlName="riverName">
+                        <mat-error *ngIf="riverStreamResponseForm.controls['riverName'].hasError('required')">
+                          River Name is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <mat-label>Type of cross section of Stream</mat-label>
+                        <mat-select formControlName="bednature">
+                          <mat-option *ngFor="
+                            let bed of bedNatures" [value]="bed.id">
+                            {{ bed.name }}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="riverStreamResponseForm.controls['bednature'].hasError('required')">
+                          You must make a selection
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                  </ng-container>
+                </div>
+
+                <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+                  <ng-container>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <mat-label>Source contribution season - Start</mat-label>
+                        <mat-select formControlName="seassonstart">
+                          <mat-option *ngFor="
+                            let month of monthFillings" [value]="month.id">
+                            {{ month.name }}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="riverStreamResponseForm.controls['seassonstart'].hasError('required')">
+                          You must make a selection
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <mat-label>Source contribution season - End</mat-label>
+                        <mat-select formControlName="seassonend">
+                          <mat-option *ngFor="
+                            let month of monthFillings" [value]="month.id">
+                            {{ month.name }}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="riverStreamResponseForm.controls['seassonend'].hasError('required')">
+                          You must make a selection
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                  </ng-container>
+                </div>
+
+                <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+                  <ng-container>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <input type="number" matInput placeholder="Percentage of source Contribution"
+                          formControlName="contributiontypepercentage">
+                        <mat-error
+                          *ngIf="riverStreamResponseForm.controls['contributiontypepercentage'].hasError('required')">
+                          Percentage of source Contribution is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <mat-label>Type of cross section of Stream</mat-label>
+                        <mat-select formControlName="streamtype">
+                          <mat-option *ngFor="
+                            let stream of crossSectionStreams" [value]="stream.id">
+                            {{ stream.name }}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="riverStreamResponseForm.controls['streamtype'].hasError('required')">
+                          You must make a selection
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                  </ng-container>
+                </div>
+
+                <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+                  <ng-container>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <input matInput placeholder="Top width of stream in m" formControlName="streamtopwidth">
+                        <mat-error *ngIf="riverStreamResponseForm.controls['streamtopwidth'].hasError('required')">
+                          Top width of stream in m is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <input matInput placeholder="Bed of stream in m" formControlName="streambed">
+                        <mat-error *ngIf="riverStreamResponseForm.controls['streambed'].hasError('required')">
+                          Bed of stream in m is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                  </ng-container>
+                </div>
+
+                <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+                  <ng-container>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-form-field class="full-width">
+                        <input matInput placeholder="Depth of stream in m" formControlName="streamdepth">
+                        <mat-error *ngIf="riverStreamResponseForm.controls['streamdepth'].hasError('required')">
+                          Depth of stream in m is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+                      <mat-label>Issues in Stream</mat-label>
+                      <mat-selection-list #riverStreamIssuesList formControlName="riverStreamtankIssues"
+                        (selectionChange)="onRiverStreamIssuesChange(riverStreamIssuesList.selectedOptions.selected)">
+                        <mat-list-option *ngFor="let issue of streamIssues" [value]="issue">
+                          {{issue.name}}
+                        </mat-list-option>
+                      </mat-selection-list>
+                    </div>
+                  </ng-container>
+                </div>
+
+              </div>
+            </form>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious color="primary">Back</button>
+        <button mat-button matStepperNext color="primary" (click)="onNext(stepper,'SuplySourceResponse')">Next</button>
+      </div>
+    </form>
+
+  </mat-step>
+  <mat-step [stepControl]="waterSpreadResponseForm">
+    <ng-template matStepLabel>Water Spread Area Details</ng-template>
+    <form [formGroup]="waterSpreadResponseForm">
+      <div fxLayout="column wrap" fxLayoutGap="15px">
+
+        <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+          <ng-container>
+            <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+              <mat-label>Issues in Water Spread Area</mat-label>
+              <mat-selection-list #spreadAreaIssuesList formControlName="SpreadAreaIssues"
+                (selectionChange)="onWaterSpreadIssuesChange(spreadAreaIssuesList.selectedOptions.selected)">
+                <mat-list-option *ngFor="let issue of spreadAreaIssues" [value]="issue">
+                  {{issue.name}}
+                </mat-list-option>
+              </mat-selection-list>
+            </div>
+            <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+              <mat-label>Select Pioritizing source of supply (Based on contribution)</mat-label>
+              <mat-selection-list #spreadSpeciesList formControlName="SpreadAreaSpecies"
+                (selectionChange)="onWaterSpreadSpeciesChange(spreadSpeciesList.selectedOptions.selected)">
+                <mat-list-option *ngFor="let specie of spreadAreaSpecies" [value]="specie">
+                  {{specie.name}}
+                </mat-list-option>
+              </mat-selection-list>
+            </div>
+          </ng-container>
+        </div>
+
+        <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+          <ng-container>
+            <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+              <mat-form-field class="full-width">
+                <input type="number" matInput placeholder="Percentage of spread in Water spread Area"
+                  formControlName="spreadpercentage">
+                <mat-error
+                  *ngIf="waterSpreadResponseForm.controls['spreadpercentage'].hasError('required')">
+                  Percentage of spread in Water spread Area is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+           
+          </ng-container>
+        </div>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious color="primary">Back</button>
+        <button mat-button matStepperNext color="primary" (click)="onNext(stepper,'SpreadResponse')">Next</button>
+      </div>
+    </form>
+
+  </mat-step>
+
+<mat-step [stepControl]="bundResponseForm">
+    <ng-template matStepLabel>Bund details</ng-template>
+    <form [formGroup]="bundResponseForm">
+      <div fxLayout="column wrap" fxLayoutGap="15px">
+
+        <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+          <ng-container>
+            <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+              <mat-form-field class="full-width">
+                <input type="number" matInput placeholder="Length of the bund in m"
+                  formControlName="bundlength">
+                <mat-error
+                  *ngIf="bundResponseForm.controls['bundlength'].hasError('required')">
+                  Length of the bund in m is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+              <mat-form-field class="full-width">
+                <input type="number" matInput placeholder="Top width of the bund in m"
+                  formControlName="bundtopwidth">
+                <mat-error
+                  *ngIf="bundResponseForm.controls['bundtopwidth'].hasError('required')">
+                  Top width of the bund in m is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </ng-container>
+        </div>
+
+        <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+          <ng-container>
+            <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+              <mat-form-field class="full-width">
+                <input type="number" matInput placeholder="Front side slope"
+                  formControlName="slopefrontside">
+                <mat-error
+                  *ngIf="bundResponseForm.controls['slopefrontside'].hasError('required')">
+                  Front side slope is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+              <mat-form-field class="full-width">
+                <input type="number" matInput placeholder="Rear side slope"
+                  formControlName="sloperearside">
+                <mat-error
+                  *ngIf="bundResponseForm.controls['sloperearside'].hasError('required')">
+                  Rear side slope is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </ng-container>
+        </div>
+
+        <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+          <ng-container>
+            
+            <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+              <mat-form-field class="full-width">
+                <mat-label>Presence of bund revetment</mat-label>
+                <mat-select formControlName="presenceofbundrevetment">
+                  <mat-option *ngFor="
+                    let bundrevetment of bundrevetments" [value]="bundrevetment">
+                    {{ bundrevetment }}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="bundResponseForm.controls['presenceofbundrevetment'].hasError('required')">
+                  You must make a selection
+                </mat-error>
+              </mat-form-field>
+             
+            </div>
+            
+            <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+              <mat-form-field class="full-width">
+                <input type="number" matInput placeholder="Length of revetment in m"
+                  formControlName="revetmentlength">
+                <mat-error
+                  *ngIf="bundResponseForm.controls['revetmentlength'].hasError('required')">
+                  Length of revetment in m is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            
+          </ng-container>
+        </div>
+
+        
+        <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+          <ng-container>
+            <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+              <mat-form-field class="full-width">
+                <mat-label>Presence of Revetment</mat-label>
+                <mat-select formControlName="presenceofrevetment">
+                  <mat-option *ngFor="
+                    let bundrevetment of bundrevetments" [value]="bundrevetment">
+                    {{ bundrevetment }}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="bundResponseForm.controls['presenceofrevetment'].hasError('required')">
+                  You must make a selection
+                </mat-error>
+              </mat-form-field>
+             
+            </div>
+            <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+              <mat-form-field class="full-width">
+                <mat-label>Condition of stone pitching (If present)</mat-label>
+                <mat-select formControlName="stonepitchingcondition">
+                  <mat-option *ngFor="
+                    let stonepitchingCondition of stonepitchingConditions" [value]="stonepitchingCondition.id">
+                    {{ stonepitchingCondition.name }}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="bundResponseForm.controls['stonepitchingcondition'].hasError('required')">
+                  You must make a selection
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </ng-container>
+        </div>
+
+        <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+          <ng-container>
+            <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+              <mat-label>Bund functionality</mat-label>
+              <mat-selection-list #bundFunctionalitesList formControlName="Functionalites"
+                (selectionChange)="onWaterBundFunctionalitesChange(bundFunctionalitesList.selectedOptions.selected)">
+                <mat-list-option *ngFor="let issue of bundfunctionalites" [value]="issue">
+                  {{issue.name}}
+                </mat-list-option>
+              </mat-selection-list>
+            </div>
+            <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+              <mat-label>Issues in bund</mat-label>
+              <mat-selection-list #bundIssuesList formControlName="BundIssues"
+                (selectionChange)="onWaterBundIssuesChange(bundIssuesList.selectedOptions.selected)">
+                <mat-list-option *ngFor="let issue of bundIssues" [value]="issue">
+                  {{issue.name}}
+                </mat-list-option>
+              </mat-selection-list>
+            </div>
+          </ng-container>
+        </div>
+        <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+          <ng-container>
+           
+            <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+              <mat-label>Stone pitching/ Revetment</mat-label>
+              <mat-selection-list #bundStonePitchings formControlName="Pitchings"
+                (selectionChange)="onWaterBundStonePitchingsChange(bundStonePitchings.selectedOptions.selected)">
+                <mat-list-option *ngFor="let pitching of bundpitchings" [value]="pitching">
+                  {{pitching.name}}
+                </mat-list-option>
+              </mat-selection-list>
+            </div>
+          </ng-container>
+        </div>
+        
+      </div>
+      <div>
+        <button mat-button matStepperPrevious color="primary">Back</button>
+        <button mat-button matStepperNext color="primary" (click)="onNext(stepper,'BundResponse')">Next</button>
+      </div>
+    </form>
+
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel>Sluice details</ng-template>
+    <form [formGroup]="sluiceResponseForm">
+      <div fxLayout="column wrap" fxLayoutGap="15px">
+        <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+          <ng-container>
+            <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+              <mat-form-field class="full-width">
+                <input type="number" matInput placeholder="No. of Sluices"
+                  formControlName="sluicenumber">
+                <mat-error
+                  *ngIf="sluiceResponseForm.controls['sluicenumber'].hasError('required')">
+                  No. of Sluices is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+              <mat-form-field class="full-width">
+                <mat-label>Type of Sluice</mat-label>
+                <mat-select formControlName="sluicetype">
+                  <mat-option *ngFor="
+                    let sluiceType of sluiceTypes" [value]="sluiceType.id">
+                    {{ sluiceType.name }}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="sluiceResponseForm.controls['sluicetype'].hasError('required')">
+                  You must make a selection
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+          </ng-container>
+        </div>
+
+        <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+          <ng-container>
+            <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+              <mat-form-field class="full-width">
+                <mat-label>Type of Barrel</mat-label>
+                <mat-select formControlName="barrelType">
+                  <mat-option *ngFor="
+                    let barrelType of barrelTypes" [value]="barrelType.id">
+                    {{ barrelType.name }}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="sluiceResponseForm.controls['barrelType'].hasError('required')">
+                  You must make a selection
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+              <mat-form-field class="full-width">
+                <input type="number" matInput placeholder="Area irrigated under the sluice in Hactare"
+                  formControlName="sluiceIrrigatedArea">
+                <mat-error
+                  *ngIf="sluiceResponseForm.controls['sluiceIrrigatedArea'].hasError('required')">
+                  Area irrigated under the sluice in Hactare is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </ng-container>
+        </div>
+
+        <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+          <ng-container>
+            
+            <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+              <mat-form-field class="full-width">
+                <input type="number" matInput placeholder="Sill level of sluice"
+                  formControlName="silllevelDepth">
+                <mat-error
+                  *ngIf="sluiceResponseForm.controls['silllevelDepth'].hasError('required')">
+                  Sill level of sluice is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            
+            <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+              <mat-form-field class="full-width">
+                <mat-label>Type of shutter</mat-label>
+                <mat-select formControlName="shutterType">
+                  <mat-option *ngFor="
+                    let shutterType of shutterTypes" [value]="shutterType.id">
+                    {{ shutterType.name }}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="sluiceResponseForm.controls['shutterType'].hasError('required')">
+                  You must make a selection
+                </mat-error>
+              </mat-form-field>
+            </div>
+            
+          </ng-container>
+        </div>
+
+        <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+          <ng-container>
+            <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+              <mat-form-field class="full-width">
+                <mat-label>Present condition of sluice</mat-label>
+                <mat-select formControlName="sluicecondition">
+                  <mat-option *ngFor="
+                    let sluicecondition of waterbodyconditions" [value]="sluicecondition.id">
+                    {{ sluicecondition.name }}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="sluiceResponseForm.controls['sluicecondition'].hasError('required')">
+                  You must make a selection
+                </mat-error>
+              </mat-form-field>
+             
+            </div>
+            <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+              <mat-form-field class="full-width">
+                <mat-label>Present condition of shutter</mat-label>
+                <mat-select formControlName="shuttercondition">
+                  <mat-option *ngFor="
+                    let shuttercondition of shutterconditions" [value]="shuttercondition.id">
+                    {{ shuttercondition.name }}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="sluiceResponseForm.controls['shuttercondition'].hasError('required')">
+                  You must make a selection
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </ng-container>
+        </div>
+
+        <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+          <ng-container>
+            <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+              <mat-form-field class="full-width">
+                <mat-label>Does sluice feed any water body</mat-label>
+                <mat-select formControlName="sluicefeedanywaterbody">
+                  <mat-option *ngFor="
+                    let sluicefeedanywaterbody of sluicefeedanywaterbodys" [value]="sluicefeedanywaterbody">
+                    {{ sluicefeedanywaterbody }}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="sluiceResponseForm.controls['sluicefeedanywaterbody'].hasError('required')">
+                  You must make a selection
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+              <mat-form-field class="full-width">
+                <input  matInput placeholder="If yes: Name of the water body"
+                  formControlName="waterbodyname">
+                <mat-error
+                  *ngIf="sluiceResponseForm.controls['waterbodyname'].hasError('required')">
+                  Name of the water body is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </ng-container>
+        </div>
+
+        <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+          <ng-container>
+            <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+              <mat-form-field class="full-width">
+                <mat-label>Availability of Field Channel</mat-label>
+                <mat-select formControlName="fieldchannel">
+                  <mat-option *ngFor="
+                    let fieldChannelavail of fieldChannelAvailability" [value]="fieldChannelavail">
+                    {{ fieldChannelavail }}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="sluiceResponseForm.controls['fieldchannel'].hasError('required')">
+                  You must make a selection
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+              <mat-form-field class="full-width">
+                <input type="number" matInput placeholder="Length of Field Channel"
+                  formControlName="fieldchannellength">
+                <mat-error
+                  *ngIf="sluiceResponseForm.controls['fieldchannellength'].hasError('required')">
+                  Length of Field Channel is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </ng-container>
+        </div>
+
+        <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+          <ng-container>
+            <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+              <mat-form-field class="full-width">
+                <mat-label>Type of Field Channel</mat-label>
+                <mat-select formControlName="fieldchannelType">
+                  <mat-option *ngFor="
+                    let fieldchannelType of fieldchannelTypes" [value]="fieldchannelType.id">
+                    {{ fieldchannelType.name }}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="sluiceResponseForm.controls['fieldchannelType'].hasError('required')">
+                  You must make a selection
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+              <mat-form-field class="full-width">
+                <input type="number" matInput placeholder="Bedwidth of Field Channel"
+                  formControlName="fieldchannelbandwidth">
+                <mat-error
+                  *ngIf="sluiceResponseForm.controls['fieldchannelbandwidth'].hasError('required')">
+                  Bedwidth of Field Channel is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </ng-container>
+        </div>
+
+        <div fxLayout="row wrap" fxLayoutGap="40px" fxLayoutAlign="flex-start">
+          <ng-container>
+            <div fxFlex="0 1 calc(48.3% - 40px)" fxLayout.lt-md="column">
+              <mat-form-field class="full-width">
+                <input type="number" matInput placeholder="Height of Field Channel"
+                  formControlName="fieldchannelheight">
+                <mat-error
+                  *ngIf="sluiceResponseForm.controls['fieldchannelheight'].hasError('required')">
+                  Height of Field Channel is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </ng-container>
+        </div>
+        
+
+      </div>
+    </form>
+    <div>
+      <button mat-button matStepperPrevious color="primary">Back</button>
+      <button mat-button matStepperNext color="primary" (click)="onNext(stepper,'BundResponse')">Next</button>
+    </div>
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    You are now done.
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+    </div>
+  </mat-step>
+
+  
+</mat-stepper>

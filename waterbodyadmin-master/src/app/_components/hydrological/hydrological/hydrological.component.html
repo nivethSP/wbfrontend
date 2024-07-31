@@ -1,0 +1,113 @@
+<form [formGroup]="hydrologicalResponseForm" novalidate>
+    <mat-card>
+        <mat-card-content>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Enter Tank Name" formControlName="tankName">
+                        <mat-error *ngIf="hydrologicalResponseForm.controls['tankName'].hasError('required')">
+                            Tank name is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Enter Water Spread Area at Full Tank Level in Hactare" formControlName="waterspreadArea">
+                        <mat-error *ngIf="hydrologicalResponseForm.controls['waterspreadArea'].hasError('required')">
+                            Waterspreadarea is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Enter Registered Ayacut in Hactare" formControlName="registeredAyacut">
+                        <mat-error *ngIf="hydrologicalResponseForm.controls['registeredAyacut'].hasError('required')">
+                            RegisteredAyacut is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Enter Original Capacity in MCM" formControlName="capacity">
+                        <mat-error *ngIf="hydrologicalResponseForm.controls['capacity'].hasError('required')">
+                            Capacity is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Enter No. of fillings" formControlName="numberoffillings">
+                        <mat-error *ngIf="hydrologicalResponseForm.controls['numberoffillings'].hasError('required')">
+                            Numberoffillings is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <mat-label>Month of first Filling</mat-label>
+                        <mat-select formControlName="firstmonthfilling">
+                            <mat-option *ngFor="
+                            let month of monthFillings" [value]="month.id">
+                                {{ month.name }}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="hydrologicalResponseForm.controls['firstmonthfilling'].hasError('required')">
+                            You must make a selection
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <mat-label>Water Availability</mat-label>
+                        <mat-select formControlName="waterAvailability">
+                            <mat-option *ngFor="
+                            let wateravailability of waterAvailabilites" [value]="wateravailability.id">
+                                {{ wateravailability.name }}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="hydrologicalResponseForm.controls['waterAvailability'].hasError('required')">
+                            You must make a selection
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <mat-label>Month of dry up / Scarcity</mat-label>
+                        <mat-select formControlName="monthdryup">
+                            <mat-option *ngFor="
+                            let month of dryFillings" [value]="month.id">
+                                {{ month.name }}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="hydrologicalResponseForm.controls['monthdryup'].hasError('required')">
+                            You must make a selection
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" type="submit" [class.spinner]="loading"
+                [disabled]="!hydrologicalResponseForm.valid">Submit</button>
+            <button type="button" mat-raised-button color="warn" >Cancel</button>
+        </mat-card-actions>
+    </mat-card>
+</form>

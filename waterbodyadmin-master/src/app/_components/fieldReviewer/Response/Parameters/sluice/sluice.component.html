@@ -1,0 +1,59 @@
+<div fxLayoutGap="5px" class="divBodyContainer">
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>No of Sluices:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{sluiceParamter?.noOfSluices}}</div>
+            </div>
+        </ng-container>
+
+    </div>
+    <div *ngFor="let sluiceDetail of sluiceParamter?.sluiceList;let indexOfelement=index;">
+        <div style="color: lightcoral">
+            <strong>Sluice {{indexOfelement + 1}} details:</strong>
+        </div>
+        <mat-divider></mat-divider>
+        <app-sluicedetail [sluiceList]="sluiceDetail"></app-sluicedetail>
+    </div>
+    
+
+
+    <div style="color: lightcoral"><strong>Field Channel Details:</strong></div>
+    <mat-divider></mat-divider>
+   
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Availability of Field Channel:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{sluiceParamter?.availabilityOfFieldChannel}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Length of Field Channel in m:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{sluiceParamter?.lengthOfFieldChannel}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Type of Field Channel:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{sluiceParamter?.typeOfFieldChannel}}</div>
+            </div>
+        </ng-container>
+
+    </div>
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Bed width of Field Channel in m:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{sluiceParamter?.bedwidthOfFieldChannel}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Depth of Field Channel in m:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{sluiceParamter?.heightOfFieldChannel}}</div>
+            </div>
+
+        </ng-container>
+
+    </div>
+</div>
+<ng-template #noContent>NA</ng-template>

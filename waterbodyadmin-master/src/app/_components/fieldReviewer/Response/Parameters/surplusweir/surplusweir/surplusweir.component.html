@@ -1,0 +1,26 @@
+<div fxLayoutGap="5px" class="divBodyContainer">
+    <div fxLayout="row wrap" fxLayoutGap="10px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(30.3% - 28px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Presence of Surplus Weir:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{surplusWeirParameter?.presenceOfSurplusWeir}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(30.3% - 28px)" fxLayout.lt-md="column" *ngIf="surplusWeirParameter?.noOfSurplusWeir">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>No of Surplus Weir:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{surplusWeirParameter?.noOfSurplusWeir}}</div>
+            </div>
+        </ng-container>
+
+    </div>
+    <div *ngFor="let surplusWeirDetail of surplusWeirParameter?.surplusWeirList;let indexOfelement=index;">
+        <div style="color: lightcoral">
+            <strong>Surplus weir {{indexOfelement + 1}} details:</strong>
+        </div>
+        <mat-divider></mat-divider>
+        <app-surplusweirdetail [surplusWeirDetail]="surplusWeirDetail"></app-surplusweirdetail>
+    </div>
+    
+</div>
+<ng-template #noContent>NA</ng-template>
+

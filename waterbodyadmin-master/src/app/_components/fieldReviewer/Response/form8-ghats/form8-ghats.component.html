@@ -1,0 +1,18 @@
+<div class="form-container">
+  <ng-container *ngIf="surveyData">
+    <p><strong>Ghats Parameter:</strong> {{ surveyData.ghatsParameter }}</p>
+    
+    <ng-container *ngIf="surveyData.ghatsParameter === 'Present'">
+      <p><strong>No. of Ghats Needed:</strong> {{ surveyData.needForGhats }}</p>
+      
+      <div>
+        <p><strong>Ghats Count:</strong> {{ surveyData.ghatsCount }}</p>
+        
+        <ng-container *ngFor="let ghat of surveyData.ghatsList; let i = index">
+          <p><strong>Condition of Ghat {{ i + 1 }}:</strong> {{ ghat.conditionOfGhats }}</p>
+        </ng-container>
+      </div>
+    </ng-container>
+    
+  </ng-container>
+</div>

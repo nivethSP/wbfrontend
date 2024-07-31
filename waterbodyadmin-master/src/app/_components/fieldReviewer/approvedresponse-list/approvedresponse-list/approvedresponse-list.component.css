@@ -1,0 +1,21 @@
+.container {
+    padding: 20px;
+}
+
+.flexcontainer {
+    margin: 15px;
+    align-content:stretch;
+    justify-content: space-between;
+}
+.mat-column-name {
+    flex: 0 0 45%;
+}
+.mat-column-detail {
+    flex: 0 0 5%;
+}
+.mat-column-update {
+    flex: 0 0 5%;
+}
+.mat-column-delete {
+    flex: 0 0 5%;
+}

@@ -1,0 +1,61 @@
+<form [formGroup]="resourceForm" novalidate (ngSubmit)="onSubmit()">
+    <mat-card class="shipping-card">
+        <mat-card-header>
+            <mat-card-title>Add Urbanlocalbodies</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <mat-label>Select Type</mat-label>
+                        <mat-select formControlName="TypeCode" [(ngModel)]="Typecode">
+                            <mat-option *ngFor="
+                            let typecode of Types" [value]="typecode.code">
+                                {{ typecode.name }}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="resourceForm.controls['TypeCode'].hasError('required')">
+                            You must make a selection
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Enter Name" formControlName="Name">
+                        <mat-error *ngIf="resourceForm.controls['Name'].hasError('required')">
+                            Name is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Enter Ward Code" formControlName="WardCode">
+                        <mat-error *ngIf="resourceForm.controls['WardCode'].hasError('required')">
+                            WardCode is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Enter Ward" formControlName="Ward">
+                        <mat-error *ngIf="resourceForm.controls['Ward'].hasError('required')">
+                            Ward is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" type="submit" [class.spinner]="loading"
+                [disabled]="!resourceForm.valid">Submit</button>
+            <button type="button" mat-raised-button color="warn" (click)="onCancel()">Cancel</button>
+        </mat-card-actions>
+    </mat-card>
+</form>

@@ -1,0 +1,90 @@
+<div fxLayoutGap="5px" class="divBodyContainer">
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="40%" fxFlex.lt-md="100"><strong>Functional Parameters:</strong></div>
+                <div fxFlex="60%" fxFlex.lt-md="100">
+                    <mat-chip-list aria-label="functions">
+                        <mat-chip selected color="primary" *ngFor="let function of functions">
+                            {{function}}
+                        </mat-chip>
+                    </mat-chip-list>
+                </div>
+            </div>
+        </ng-container>
+
+    </div>
+    <div *ngIf="irrigation">
+        <div style="color: lightcoral">
+            <strong>For Irrigation:</strong>
+        </div>
+        <mat-divider></mat-divider>
+        <app-irrigationcommandarea [irrigation]="irrigation"></app-irrigationcommandarea>
+    </div>
+    <div *ngIf="fishing">
+        <div style="color: lightcoral">
+            <strong>For Fishing:</strong>
+        </div>
+        <mat-divider></mat-divider>
+        <app-fishing [fishing]="fishing"></app-fishing>
+    
+    </div>
+    <div *ngIf="lotus">
+        <div style="color: lightcoral">
+            <strong>For Lotus cultivation:</strong>
+        </div>
+        <mat-divider></mat-divider>
+        <app-lotuscultivation [lotus]="lotus"></app-lotuscultivation>
+    </div>
+   
+    <div *ngIf="waterSpreadArea">
+        <div style="color: lightcoral">
+            <strong>For water spread area cultivation:</strong>
+        </div>
+        <mat-divider></mat-divider>
+        <app-waterspreadarea [waterSpreadArea]="waterSpreadArea"></app-waterspreadarea>
+    </div>
+    
+    <div *ngIf="duckRearing">
+        <div style="color: lightcoral">
+            <strong>For duck rearing:</strong>
+        </div>
+        <mat-divider></mat-divider>
+        <app-duck-rearing [duckRearing]="duckRearing"></app-duck-rearing>
+    </div>
+   
+    <div *ngIf="bundTree">
+        <div style="color: lightcoral">
+            <strong>For Harvest from bund trees:</strong>
+        </div>
+        <mat-divider></mat-divider>
+        <app-bundtree [bundTree]="bundTree"></app-bundtree>
+    </div>
+ 
+    <div *ngIf="pottery">
+        <div style="color: lightcoral">
+            <strong>For pottery:</strong>
+        </div>
+        <mat-divider></mat-divider>
+        <app-pottery [pottery]="pottery"></app-pottery>
+    </div>
+    
+    <div *ngIf="livestock">
+        <div style="color: lightcoral">
+            <strong>For livestock:</strong>
+        </div>
+        <mat-divider></mat-divider>
+        <app-livestock [livestock]="livestock"></app-livestock>
+    </div>
+    
+    <div *ngIf="others">
+        <div style="color: lightcoral">
+            <strong>For any other:</strong>
+        </div>
+        <mat-divider></mat-divider>
+        <app-others [others]="others"></app-others>
+    </div>
+   
+
+</div>
+<ng-template #noContent></ng-template>

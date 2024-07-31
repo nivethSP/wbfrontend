@@ -1,0 +1,50 @@
+<div fxLayoutGap="5px" class="divBodyContainer">
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="40%" fxFlex.lt-md="100"><strong>Uniqueness :</strong></div>
+                <div fxFlex="60%" fxFlex.lt-md="100">
+                    <mat-chip-list aria-label="uniquenessOfTanks">
+                        <mat-chip selected color="primary" *ngFor="let uniqueness of uniquenessOfTanks">
+                            {{uniqueness}}
+                        </mat-chip>
+                    </mat-chip-list>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Description (if any):</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{uniquenessParameter?.description || 'N/A'}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Presence of Neerkatti practice:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{uniquenessParameter?.presenceOfNeerkattiPractice || 'N/A'}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Presence of Recreational Space:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{uniquenessParameter?.presenceOfRecreationalSpace || 'N/A'}}</div>
+            </div>
+
+            <ng-container *ngIf="uniquenessParameter?.presenceOfRecreationalSpace === 'Yes'">
+                <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                    <div fxFlex="50%" fxFlex.lt-md="100"><strong>Condition of Recreational Space:</strong></div>
+                    <div fxFlex="50%" fxFlex.lt-md="100">{{uniquenessParameter?.conditionOfRecreationalSpace || 'N/A'}}</div>
+                </div>
+            </ng-container>
+
+            <ng-container *ngIf="uniquenessParameter?.presenceOfRecreationalSpace === 'No'">
+                <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                    <div fxFlex="50%" fxFlex.lt-md="100"><strong>Need for Recreational Space:</strong></div>
+                    <div fxFlex="50%" fxFlex.lt-md="100">{{uniquenessParameter?.needForRecreationalSpace || 'N/A'}}</div>
+                </div>
+            </ng-container>
+        </ng-container>
+    </div>
+</div>
+<ng-template #noContent>NA</ng-template>

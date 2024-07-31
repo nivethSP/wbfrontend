@@ -1,0 +1,92 @@
+<div fxLayoutGap="5px" class="divBodyContainer">
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Name of the downstream tank:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{surplusCourseDetail?.nameOfDownstreamTank}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Type of Cross section Stream:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{surplusCourseDetail?.typeOfCrossSection}}</div>
+            </div>
+
+
+        </ng-container>
+
+    </div>
+
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Head Top width of course in m:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{surplusCourseDetail?.headTopWidth}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Head Bed width of course in m:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{surplusCourseDetail?.headBed}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Head Depth of course in m:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{surplusCourseDetail?.headDepth}}</div>
+            </div>
+        </ng-container>
+
+    </div>
+
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Middle Top width of course in m:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{surplusCourseDetail?.middleTopWidth}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Middle Bed width of course in m:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{surplusCourseDetail?.middleBed}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Middle Depth of course in m:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{surplusCourseDetail?.middleDepth}}</div>
+            </div>
+        </ng-container>
+    </div>
+
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Tail Top width of course in m:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{surplusCourseDetail?.tailTopWidth}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Tail Bed width of course in m:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{surplusCourseDetail?.tailBed}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Tail Depth of course in m:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{surplusCourseDetail?.tailDepth}}</div>
+            </div>
+        </ng-container>
+    </div>
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="40%" fxFlex.lt-md="100"><strong>Issues in Surplus:</strong></div>
+                <div fxFlex="60%" fxFlex.lt-md="100">
+                    <mat-chip-list aria-label="surplusCourseIssues">
+                        <mat-chip selected color="primary" *ngFor="let issue of surplusCourseIssues">
+                            {{issue}}
+                        </mat-chip>
+                    </mat-chip-list>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+     
+</div>

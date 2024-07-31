@@ -1,0 +1,34 @@
+<div fxLayoutGap="5px" class="divBodyContainer">
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Status of Fence:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{fenceParameter?.presenceOfFencing}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Fence:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{fenceParameter?.fence}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Type of fencing:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{fenceParameter?.typeOfFence}}</div>
+            </div>
+            
+        </ng-container>
+
+    </div>
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Present condition of Fence:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{fenceParameter?.conditionOfFence}}</div>
+            </div>
+        </ng-container>
+
+    </div>
+</div>
+<ng-template #noContent>NA</ng-template>
+
+

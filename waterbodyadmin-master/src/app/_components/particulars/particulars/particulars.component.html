@@ -1,0 +1,122 @@
+<form [formGroup]="particularsForm" novalidate>
+   
+    <mat-card>
+        <mat-card-content>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Enter Unique ID of the water body" formControlName="uniqueid">
+                        <mat-error *ngIf="particularsForm.controls['uniqueid'].hasError('required')">
+                            Uniqueid is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <mat-label>Name of the Taluk</mat-label>
+                        <mat-select formControlName="taluk">
+                            <mat-option *ngFor="
+                            let taluk of taluks" [value]="taluk.id">
+                                {{ taluk.name }}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="particularsForm.controls['taluk'].hasError('required')">
+                            You must make a selection
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <mat-label>Name of the Block</mat-label>
+                        <mat-select formControlName="block" (selectionChange)="onblockchange($event.value)">
+                            <mat-option *ngFor="
+                            let block of blocks" [value]="block.id">
+                                {{ block.name }}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="particularsForm.controls['block'].hasError('required')">
+                            You must make a selection
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <mat-label>Name of the Village Panchayat</mat-label>
+                        <mat-select formControlName="panchayat">
+                            <mat-option *ngFor="
+                            let panchayat of panchayats" [value]="panchayat.id">
+                                {{ panchayat.name }}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="particularsForm.controls['panchayat'].hasError('required')">
+                            You must make a selection
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Enter Name of the Village" formControlName="village">
+                        <mat-error *ngIf="particularsForm.controls['village'].hasError('required')">
+                            Village is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <input matInput placeholder="Enter Survey No" formControlName="surveyno">
+                        <mat-error *ngIf="particularsForm.controls['surveyno'].hasError('required')">
+                            Surveyno is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <mat-label>Ownership</mat-label>
+                        <mat-select formControlName="ownership">
+                            <mat-option *ngFor="
+                            let ownership of ownerships" [value]="ownership.id">
+                                {{ ownership.name }}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="particularsForm.controls['ownership'].hasError('required')">
+                            You must make a selection
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <mat-form-field class="full-width">
+                        <mat-label>Type of tank</mat-label>
+                        <mat-select formControlName="tanktype">
+                            <mat-option *ngFor="
+                            let tanktype of tanktypes" [value]="tanktype.id">
+                                {{ tanktype.name }}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="particularsForm.controls['tanktype'].hasError('required')">
+                            You must make a selection
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+
+        </mat-card-content>
+        <mat-card-actions>
+        </mat-card-actions>
+    </mat-card>
+</form>

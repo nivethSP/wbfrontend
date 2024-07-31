@@ -1,0 +1,64 @@
+<div fxLayoutGap="5px" class="divBodyContainer">
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Total number of trees:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{bundTree?.noOfTrees}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>No of income generating trees:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{bundTree?.noOfIncomeTrees}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Name of tree:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{bundTree?.nameOfTree}}</div>
+            </div>
+
+        </ng-container>
+
+    </div>
+
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Nature of Investment:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{bundTree?.natureOfInvestment}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Month of harvest - Start:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{bundTree?.monthOfHarvestStart}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Month of harvest - End:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{bundTree?.monthOfHarvestEnd}}</div>
+            </div>
+        </ng-container>
+
+    </div>
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Approx investment in Rupees:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{bundTree?.investment}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Approx return in Rupees:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{bundTree?.return}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>No of dependent families:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{bundTree?.noOfDependentFamilies}}</div>
+            </div>
+        </ng-container>
+
+    </div>
+    
+</div>
+<ng-template #noContent>NA</ng-template>
+

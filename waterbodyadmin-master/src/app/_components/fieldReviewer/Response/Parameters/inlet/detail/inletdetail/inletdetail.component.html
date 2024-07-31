@@ -1,0 +1,22 @@
+<div fxLayoutGap="5px" class="divBodyContainer">
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Nature of inlet structure:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{inlet?.natureOfInlet}}</div>
+            </div>
+    
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Current condition of Inlet:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{inlet?.conditionOfInlet}}</div>
+            </div>
+    
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Silt Trap:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{inlet?.slitTrap}}</div>
+            </div>
+    
+        </ng-container>
+    
+    </div>
+</div>

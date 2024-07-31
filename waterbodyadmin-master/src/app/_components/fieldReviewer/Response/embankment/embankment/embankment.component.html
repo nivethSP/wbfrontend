@@ -1,0 +1,133 @@
+<div fxLayoutGap="5px" class="divBodyContainer">
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Nature of Embankment:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{embankmentDetail?.natureOfEmbankment}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Length of the Bund in m:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{embankmentDetail?.bundlength}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Top width of the Bund in m:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{embankmentDetail?.bundtopwidth}}</div>
+            </div>
+
+        </ng-container>
+
+    </div>
+
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Slope of front side:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{embankmentDetail?.slopeforeside}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Slope of rear side:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{embankmentDetail?.sloperearside}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Presence of walking pavement:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{embankmentDetail?.presenceOfWalkingPavement}}</div>
+            </div>
+
+        </ng-container>
+
+    </div>
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start"
+        *ngIf="embankmentDetail?.presenceOfWalkingPavement === 'Yes'">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Nature of walking pavement:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{embankmentDetail?.natureOfWalkingPavement}}</div>
+            </div>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Condition of pavement / stones:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{embankmentDetail?.conditionOfWalkingPavement}}</div>
+            </div>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Length of pavement in m:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{embankmentDetail?.lengthOfPavement}}</div>
+            </div>
+
+
+        </ng-container>
+
+    </div>
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start"
+        *ngIf="embankmentDetail?.presenceOfWalkingPavement === 'Yes'">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Need for Walking Track:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{embankmentDetail?.needForWalkingTrack}}</div>
+            </div>
+
+        </ng-container>
+
+    </div>
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start"
+        *ngIf="embankmentDetail?.presenceOfStonePitching === 'No'">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Need of stone pitching:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{embankmentDetail?.stonepitchingconditionNeeded}}</div>
+            </div>
+
+            <!--div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Extent Of Stone Pitching:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{embankmentDetail?.extentOfStonePitching}}</div>
+            </div-->
+
+        </ng-container>
+
+    </div>
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start"
+        *ngIf="embankmentDetail?.presenceOfStonePitching === 'Yes'">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong> stone pitching:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{embankmentDetail?.stonePitching}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong> Stone Pitching Condition:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{embankmentDetail?.stonepitchingcondition}}</div>
+            </div>
+
+        </ng-container>
+
+    </div>
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="40%" fxFlex.lt-md="100"><strong>Bund Functionality:</strong></div>
+                <div fxFlex="60%" fxFlex.lt-md="100">
+                    <mat-chip-list aria-label="bundIssues">
+                        <mat-chip selected color="primary" *ngFor="let functionnality of bundFunctionalities">
+                            {{functionnality}}
+                        </mat-chip>
+                    </mat-chip-list>
+                </div>
+            </div>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="40%" fxFlex.lt-md="100"><strong>Issues in Bund:</strong></div>
+                <div fxFlex="60%" fxFlex.lt-md="100">
+                    <mat-chip-list aria-label="bundIssues">
+                        <mat-chip selected color="primary" *ngFor="let issue of bundIssues">
+                            {{issue}}
+                        </mat-chip>
+                    </mat-chip-list>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+
+</div>
+
+<ng-template #noContent>NA</ng-template>

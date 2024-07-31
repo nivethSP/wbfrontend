@@ -1,0 +1,22 @@
+<div fxLayoutGap="5px" class="divBodyContainer">
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Nature of outlet structure:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{outlet?.natureOfOutlet}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Current condition of Outlet:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{outlet?.conditionOfOutlet}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Slit Trap:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{outlet?.slitTrap}}</div>
+            </div>
+
+        </ng-container>
+
+    </div>
+</div>

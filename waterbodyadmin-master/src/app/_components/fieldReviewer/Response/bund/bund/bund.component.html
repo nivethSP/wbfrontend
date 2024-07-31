@@ -1,0 +1,133 @@
+<div fxLayoutGap="5px" class="divBodyContainer">
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Length of the bund in m:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{bundDetail?.bundlength}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Top width of the bund in m:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{bundDetail?.bundtopwidth}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Top bund level from MSL in m:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{bundDetail?.topBundLevelFromMSL}}</div>
+            </div>
+
+        </ng-container>
+
+    </div>
+
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Slope of front side:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{bundDetail?.slopeforeside}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Slope of rear side:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{bundDetail?.sloperearside}}</div>
+            </div>
+        </ng-container>
+
+    </div>
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Presence of access ghat:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{bundDetail?.presenceOfAccessGhat}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>No of Access Ghats:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100" *ngIf="bundDetail?.presenceOfAccessGhat === 'Yes';else noContent">
+                    {{bundDetail?.noOfAccessGhats}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Ghats Condition:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100" *ngIf="bundDetail?.accessGhatsConditionList;else noContent">
+                    <mat-chip-list aria-label="accessGhatsConditions">
+                        <mat-chip selected color="primary"  *ngFor="let ghatCondition of bundDetail?.accessGhatsConditionList;let indexOfelement=index;">
+                            {{indexOfelement + 1}}-{{ghatCondition.condition}}
+                        </mat-chip>
+                    </mat-chip-list>
+                </div>
+            </div>
+
+           
+        </ng-container>
+
+    </div>
+
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Presence of stone pitching:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{bundDetail?.presenceOfStonePitching}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Stone Pitching:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100"
+                    *ngIf="bundDetail?.presenceOfStonePitching === 'Yes';else noContent">
+                    <mat-chip-list aria-label="bundIssues">
+                        <mat-chip selected color="primary"
+                            *ngFor="let stonePitchingCondition of stonepitchingConditions">
+                            {{stonePitchingCondition}}
+                        </mat-chip>
+                    </mat-chip-list>
+                </div>
+            </div>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Condition of stone pitching:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100"
+                    *ngIf="bundDetail?.presenceOfStonePitching === 'Yes';else noContent">
+                    {{bundDetail?.stonepitchingcondition}}</div>
+            </div>
+        </ng-container>
+    </div>
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+        
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Presence of Revetment:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{bundDetail?.presenceOfRevetment}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Length of Revetment:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100" *ngIf="bundDetail?.presenceOfRevetment === 'Yes';else noContent">{{bundDetail?.lengthOfRevetment}}</div>
+            </div>
+        </ng-container>
+    </div>
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="40%" fxFlex.lt-md="100"><strong>Bund Functionality:</strong></div>
+                <div fxFlex="60%" fxFlex.lt-md="100">
+                    <mat-chip-list aria-label="bundIssues">
+                        <mat-chip selected color="primary" *ngFor="let functionnality of bundFunctionalities">
+                            {{functionnality}}
+                        </mat-chip>
+                    </mat-chip-list>
+                </div>
+            </div>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="40%" fxFlex.lt-md="100"><strong>Issues in Bund:</strong></div>
+                <div fxFlex="60%" fxFlex.lt-md="100">
+                    <mat-chip-list aria-label="bundIssues">
+                        <mat-chip selected color="primary" *ngFor="let issue of bundIssues">
+                            {{issue}}
+                        </mat-chip>
+                    </mat-chip-list>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+
+</div>
+<ng-template #noContent>NA</ng-template>

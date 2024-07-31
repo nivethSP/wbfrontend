@@ -1,0 +1,27 @@
+.mat-stepper-horizontal {
+    margin-top: 8px;
+  }
+  
+  .container {
+    padding: 20px;
+}
+.mat-horizontal-stepper-header-container {
+  overflow-x: auto !important;
+}
+
+.mat-step-header {
+  min-width: fit-content !important;;
+}
+
+/* .flex {
+  flex: 1 1 auto;
+}    
+
+.scrollable {
+  overflow-x: scroll;
+  overflow-y:hidden;
+  width: 100%;
+  white-space: nowrap
+} */
+
+  

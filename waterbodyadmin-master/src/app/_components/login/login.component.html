@@ -1,0 +1,44 @@
+<div fxLayoutAlign="center center" fxFlexFill class="main-div alternative">
+    <mat-card fxFlex="50">
+      <div fxFlex="50">
+        <img class="image" src="assets/images/WaterBodyPortalImage.png"/>
+      </div>
+      <div fxFlex="50">
+        <mat-card-header>
+          <div fxFlex="80" fxLayout="column" fxLayoutAlign="center center">
+            <div>
+              <img class="images" src="assets/images/blue1.png"/>
+            </div>
+            <div>
+              <h3><b>Login</b></h3>
+            </div>
+          </div>
+          
+      </mat-card-header>
+        <form fxLayoutAlign="stretch" fxLayout="column" class="login-form" [formGroup]="loginForm" (ngSubmit)="authenticate()">
+          <mat-form-field>
+            <mat-label>User Name</mat-label>
+            <input matInput formControlName="username" placeholder="Username">
+          </mat-form-field>
+    
+          <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput type="password" formControlName="password" placeholder="Password">
+          </mat-form-field>
+          <div fxLayout="column" fxLayoutAlign="center center">
+            <div>
+              <a routerLink="/forgetPassword" class="btn btn-link">Forget Password</a>
+            </div>
+            <br>
+            <div>
+              <button mat-raised-button type="submit" class="mt-5" color="primary">Login</button>
+            </div>          
+            
+          </div>
+         
+        </form>
+      </div>
+      
+  
+    </mat-card>
+  </div>

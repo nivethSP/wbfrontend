@@ -1,0 +1,63 @@
+<div fxLayoutGap="5px" class="divBodyContainer">
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Area under water spread cultivation in acres:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{waterSpreadArea?.area}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>No of families involved:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{waterSpreadArea?.noOfFamiliesInvolved}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Name of families involved:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{waterSpreadArea?.natureOfFamilies}}</div>
+            </div>
+
+        </ng-container>
+
+    </div>
+
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Distribution of land per family:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{waterSpreadArea?.distributionOfLand}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Acreage per family:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{waterSpreadArea?.acreage}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Month of cultivation - Start:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{waterSpreadArea?.monthOfCultivationStart}}</div>
+            </div>
+        </ng-container>
+
+    </div>
+    <div fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+        <ng-container>
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Month of cultivation - End:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{waterSpreadArea?.monthOfCultivationEnd}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Approx investment per acre in Rupees:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{waterSpreadArea?.investment}}</div>
+            </div>
+
+            <div fxFlex="0 1 calc(33.3% - 32px)" fxLayout.lt-md="column">
+                <div fxFlex="50%" fxFlex.lt-md="100"><strong>Approx return per acre in Rupees:</strong></div>
+                <div fxFlex="50%" fxFlex.lt-md="100">{{waterSpreadArea?.return}}</div>
+            </div>
+        </ng-container>
+
+    </div>
+ 
+</div>
+<ng-template #noContent>NA</ng-template>
